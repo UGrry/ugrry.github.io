@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>海巡研究班25期 · 第一階段考試題庫 自我測驗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;600;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0d1826;
+    --navy-900:#14263d;
+    --navy-800:#1c344f;
+    --navy-700:#264364;
+    --paper:#f3ecdc;
+    --paper-hi:#faf6ec;
+    --paper-dark:#e6dabf;
+    --ink:#2a2116;
+    --ink-soft:#5c5340;
+    --ink-faint:#8a806a;
+    --seal:#a5382a;
+    --seal-dark:#7e2a20;
+    --brass:#b98a3f;
+    --brass-hi:#d9ad63;
+    --teal:#3d6b66;
+    --ok:#3f7250;
+    --warn:#a5382a;
+    --line: rgba(42,33,22,0.14);
+    --shadow: 0 18px 40px rgba(13,24,38,0.35);
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #1a3050 0%, transparent 60%),
+      radial-gradient(1000px 700px at 110% 10%, #16283f 0%, transparent 55%),
+      var(--navy-950);
+    color:var(--paper);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--brass); color:var(--navy-950);}
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:20px 20px 64px;
+  }
+  header.top{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+    padding:22px 26px;
+    margin-bottom:18px;
+    background:linear-gradient(180deg, var(--navy-800), var(--navy-900));
+    border:1px solid rgba(217,173,99,0.25);
+    border-radius:6px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.top::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 42px);
+    pointer-events:none;
+  }
+  .title-block{position:relative; z-index:1;}
+  .eyebrow{
+    font-size:11.5px;
+    letter-spacing:.28em;
+    color:var(--brass-hi);
+    text-transform:uppercase;
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:clamp(22px,3.4vw,32px);
+    margin:0 0 6px;
+    letter-spacing:.02em;
+    color:var(--paper-hi);
+  }
+  .subtitle{color:var(--ink-faint); color:#9fb0c4; font-size:13.5px;}
+  .top-stats{
+    position:relative; z-index:1;
+    display:flex; gap:22px;
+    text-align:right;
+  }
+  .stat{display:flex; flex-direction:column; gap:2px;}
+  .stat .num{font-family:"Noto Serif TC",serif; font-weight:700; font-size:22px; color:var(--brass-hi);}
+  .stat .lbl{font-size:11px; color:#9fb0c4; letter-spacing:.06em;}
+
+  /* ---------- mode switch ---------- */
+  .mode-switch{
+    display:inline-flex;
+    background:var(--navy-900);
+    border:1px solid rgba(217,173,99,0.3);
+    border-radius:999px;
+    padding:4px;
+    margin-bottom:18px;
+  }
+  .mode-switch button{
+    border:none;
+    background:transparent;
+    color:#a9b8ca;
+    font-family:"Noto Sans TC",sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    padding:9px 20px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.18s ease;
+  }
+  .mode-switch button.active{
+    background:linear-gradient(180deg,var(--brass-hi),var(--brass));
+    color:var(--navy-950);
+  }
+
+  /* ---------- layout grid ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:238px 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  /* ---------- sidebar / folder tabs ---------- */
+  .sidebar{
+    background:var(--navy-900);
+    border:1px solid rgba(217,173,99,0.18);
+    border-radius:6px;
+    padding:16px 14px 18px;
+    position:sticky;
+    top:16px;
+  }
+  @media (max-width:860px){ .sidebar{position:static;} }
+  .side-h{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--brass-hi);
+    margin:2px 2px 10px;
+    font-weight:700;
+  }
+  .folder-list{list-style:none; margin:0 0 16px; padding:0; display:flex; flex-direction:column; gap:6px;}
+  .folder-tab{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    background:var(--navy-800);
+    border:1px solid transparent;
+    border-left:3px solid transparent;
+    border-radius:2px;
+    padding:8px 10px;
+    font-size:12.8px;
+    cursor:pointer;
+    color:#c7d3e0;
+    line-height:1.35;
+    transition:.15s ease;
+  }
+  .folder-tab:hover{background:var(--navy-700);}
+  .folder-tab.active{
+    border-left-color:var(--brass-hi);
+    background:var(--navy-700);
+    color:var(--paper-hi);
+  }
+  .folder-tab .cnt{font-size:11px; color:var(--ink-faint); color:#8ea0b6; flex:none;}
+
+  .chip-row{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px;}  .chip{
+    border:1px solid rgba(217,173,99,0.35);
+    background:transparent;
+    color:#c7d3e0;
+    border-radius:999px;
+    padding:6px 12px;
+    font-size:12px;
+    cursor:pointer;
+    font-family:"Noto Sans TC",sans-serif;
+  }
+  .chip.active{
+    background:var(--brass-hi);
+    border-color:var(--brass-hi);
+    color:var(--navy-950);
+    font-weight:700;
+  }
+  .toggle-row{display:flex; align-items:center; justify-content:space-between; padding:9px 2px; border-top:1px solid rgba(255,255,255,0.07); font-size:12.5px; color:#c7d3e0;}
+  .switch{
+    width:36px; height:20px; border-radius:999px; background:var(--navy-700);
+    position:relative; cursor:pointer; flex:none; border:1px solid rgba(255,255,255,0.1);
+  }
+  .switch.on{background:var(--teal);}
+  .switch .dot{
+    position:absolute; top:2px; left:2px; width:14px; height:14px; border-radius:50%;
+    background:#e9e2cf; transition:.15s ease;
+  }
+  .switch.on .dot{left:18px; background:#fff;}
+  .search-wrap{margin-top:14px;}
+  .search-wrap input{
+    width:100%;
+    background:var(--navy-950);
+    border:1px solid rgba(217,173,99,0.25);
+    color:var(--paper-hi);
+    padding:9px 11px;
+    border-radius:4px;
+    font-size:13px;
+    font-family:"Noto Sans TC",sans-serif;
+  }
+  .search-wrap input::placeholder{color:#71839a;}
+  .reset-btn{
+    margin-top:14px; width:100%;
+    background:transparent;
+    border:1px solid rgba(165,56,42,0.55);
+    color:#e2a89f;
+    padding:8px 10px; border-radius:4px;
+    font-size:12px; cursor:pointer;
+  }
+  .reset-btn:hover{background:rgba(165,56,42,0.15);}
+
+  /* ---------- main panel ---------- */
+  .panel{min-height:420px;}
+  .empty{
+    background:var(--navy-900);
+    border:1px dashed rgba(217,173,99,0.3);
+    border-radius:6px;
+    padding:60px 24px;
+    text-align:center;
+    color:#9fb0c4;
+    font-size:14px;
+  }
+
+  /* ---------- custom question picker ---------- */
+  .picker-toolbar{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    gap:10px; margin-bottom:14px; color:#c7d3e0;
+  }
+  .picker-count{font-size:13px;}
+  .picker-count strong{color:var(--brass-hi); font-size:15.5px;}
+  .picker-actions{display:flex; gap:8px; flex-wrap:wrap;}
+  .picker-list{display:flex; flex-direction:column; gap:8px;}
+  .picker-item{
+    display:flex; align-items:flex-start; gap:12px;
+    background:var(--navy-900);
+    border:1px solid rgba(217,173,99,0.15);
+    border-radius:5px;
+    padding:12px 14px;
+    cursor:pointer;
+  }
+  .picker-item:hover{border-color:rgba(217,173,99,0.35);}
+  .picker-item.checked{
+    border-color:var(--brass-hi);
+    background:var(--navy-800);
+  }
+  .picker-item input[type="checkbox"]{
+    margin-top:3px;
+    width:17px; height:17px;
+    accent-color:var(--brass-hi);
+    flex:none;
+    cursor:pointer;
+  }
+  .picker-item-body{display:flex; flex-direction:column; gap:6px; flex:1; min-width:0;}
+  .picker-item-q{font-size:13.5px; line-height:1.6; color:#dbe4ee;}
+  .picker-footer{
+    position:sticky; bottom:0;
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid rgba(217,173,99,0.2);
+    background:linear-gradient(180deg, transparent, var(--navy-950) 30%);
+  }
+  .picker-footer .act-btn.next{width:100%;}
+  .picker-footer .act-btn.next:disabled{opacity:.4; cursor:not-allowed;}
+  .custom-banner{
+    font-size:12.5px; color:#9fb0c4; margin-bottom:12px;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  }
+  .custom-banner .edit-again-btn{color:var(--brass-hi);}
+
+  /* progress bar (quiz mode) */
+  .progress-wrap{display:flex; align-items:center; gap:12px; margin-bottom:14px; color:#9fb0c4; font-size:12.5px;}
+  .progress-track{flex:1; height:5px; background:var(--navy-800); border-radius:999px; overflow:hidden;}
+  .progress-fill{height:100%; background:linear-gradient(90deg,var(--brass),var(--brass-hi)); border-radius:999px; transition:width .25s ease;}
+
+  /* the case-file card */
+  .card{
+    background:linear-gradient(180deg, var(--paper-hi), var(--paper));
+    color:var(--ink);
+    border-radius:5px;
+    box-shadow:var(--shadow);
+    padding:30px 30px 26px;
+    position:relative;
+    border:1px solid rgba(0,0,0,0.06);
+  }
+  .card::before{
+    content:"";
+    position:absolute; left:0; top:18px; bottom:18px; width:5px;
+    background:var(--navy-800);
+    border-radius:0 3px 3px 0;
+  }
+  .card-meta{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .tag{
+    font-size:11px;
+    letter-spacing:.05em;
+    padding:4px 9px;
+    border-radius:2px;
+    font-weight:700;
+  }
+  .tag.theme{background:var(--navy-900); color:#cfdcea;}
+  .tag.qtype{background:var(--paper-dark); color:var(--ink-soft); border:1px solid var(--line);}
+  .seal{
+    font-family:"Zhi Mang Xing","Noto Serif TC",serif;
+    font-size:15px;
+    color:var(--seal);
+    border:2.5px solid var(--seal);
+    border-radius:6px;
+    padding:2px 9px 3px;
+    transform:rotate(-6deg);
+    display:inline-block;
+    letter-spacing:.08em;
+    opacity:.92;
+  }
+  .qnum{margin-left:auto; font-size:11.5px; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
+
+  .question-text{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    font-size:clamp(17px,2.1vw,20px);
+    line-height:1.75;
+    margin:6px 0 20px;
+    color:var(--ink);
+  }
+
+  .reveal-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--navy-900);
+    color:var(--paper-hi);
+    border:none;
+    padding:11px 20px;
+    border-radius:4px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    font-family:"Noto Sans TC",sans-serif;
+  }
+  .reveal-btn:hover{background:var(--navy-800);}
+
+  .write-area{margin-top:4px;}
+  .write-area textarea{
+    width:100%;
+    min-height:170px;
+    background:var(--paper-hi);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:14px;
+    font-family:"Noto Sans TC",sans-serif;
+    font-size:14.5px;
+    line-height:1.8;
+    color:var(--ink);
+    resize:vertical;
+  }
+  .write-area textarea:focus{outline:2px solid var(--brass); outline-offset:1px;}
+  .write-hint{font-size:11.5px; color:var(--ink-faint); margin:8px 0 16px;}
+
+  .compare-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:20px;
+  }
+  @media (max-width:700px){ .compare-grid{grid-template-columns:1fr;} }
+  .compare-col .answer-label{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .edit-again-btn{
+    border:none; background:transparent; color:var(--teal);
+    font-size:11.5px; text-decoration:underline; cursor:pointer; padding:0;
+    font-family:"Noto Sans TC",sans-serif;
+  }
+  .user-answer-text{
+    white-space:pre-wrap;
+    line-height:1.85;
+    font-size:14.5px;
+    color:var(--ink);
+    background:var(--paper-dark);
+    border-radius:4px;
+    padding:14px;
+    border:1px solid var(--line);
+    min-height:60px;
+  }
+  .user-answer-text.empty{color:var(--ink-faint); font-style:italic;}
+  mark.diff-bad{
+    background:rgba(165,56,42,0.10);
+    color:var(--seal);
+    font-weight:800;
+    border-radius:2px;
+    padding:0 1px;
+  }
+  .diff-legend{
+    display:flex; align-items:center; gap:6px;
+    font-size:11.5px; color:var(--ink-faint);
+    margin:2px 0 4px;
+  }
+  .diff-legend mark.diff-bad{padding:0 5px;}
+
+  .answer-block{
+    margin-top:20px;
+    padding-top:18px;
+    border-top:1px dashed var(--line);
+  }
+  .answer-label{
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--teal); font-weight:700; margin-bottom:10px;
+  }
+  .answer-list{list-style:none; margin:0; padding:0;}
+  .answer-list li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:8px;
+    line-height:1.85;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .answer-list li::before{
+    content:"•";
+    position:absolute; left:2px; top:0;
+    color:var(--brass);
+    font-weight:700;
+  }
+  .answer-list li[data-lv="2"]{padding-left:38px; font-size:14px; color:var(--ink-soft);}
+  .answer-list li[data-lv="2"]::before{content:"–"; left:20px; color:var(--teal);}
+  .answer-list li[data-lv="3"]{padding-left:56px; font-size:13.5px; color:var(--ink-faint);}
+  .answer-list li[data-lv="3"]::before{content:"·"; left:40px;}
+  .answer-list li[data-lv="0"]{padding-left:0;}
+  .answer-list li[data-lv="0"]::before{content:"";}
+
+  .action-row{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;
+  }
+  .act-btn{
+    flex:1 1 auto;
+    min-width:120px;
+    border:1px solid var(--line);
+    background:var(--paper-hi);
+    color:var(--ink);
+    padding:10px 14px;
+    border-radius:4px;
+    font-size:13.5px;
+    font-weight:600;
+    cursor:pointer;
+    font-family:"Noto Sans TC",sans-serif;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .act-btn.weak{color:var(--warn); border-color:rgba(165,56,42,0.4);}
+  .act-btn.weak.selected{background:var(--warn); color:#fff;}
+  .act-btn.known{color:var(--ok); border-color:rgba(63,114,80,0.4);}
+  .act-btn.known.selected{background:var(--ok); color:#fff;}
+  .act-btn.next{background:var(--navy-900); color:var(--paper-hi); border:none; flex:1 1 100%;}
+  .act-btn.next:hover{background:var(--navy-800);}
+
+  /* browse mode list */
+  .browse-item{
+    background:linear-gradient(180deg, var(--paper-hi), var(--paper));
+    color:var(--ink);
+    border-radius:5px;
+    padding:16px 20px;
+    margin-bottom:12px;
+    cursor:pointer;
+    border:1px solid rgba(0,0,0,0.06);
+    box-shadow:0 6px 16px rgba(13,24,38,0.18);
+  }
+  .browse-item .card-meta{margin-bottom:10px;}
+  .browse-item .question-text{font-size:15.5px; margin:0; line-height:1.6;}
+  .browse-item .answer-block{display:none;}
+  .browse-item.open .answer-block{display:block;}
+  .browse-hint{font-size:11.5px; color:var(--ink-faint); margin-top:8px;}
+
+  .status-dot{width:8px; height:8px; border-radius:50%; flex:none;}
+  .status-dot.known{background:var(--ok);}
+  .status-dot.weak{background:var(--warn);}
+  .status-dot.new{background:var(--ink-faint); opacity:.5;}
+
+  footer{
+    text-align:center;
+    color:#5c6f85;
+    font-size:11.5px;
+    margin-top:30px;
+    letter-spacing:.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="top">
+    <div class="title-block">
+      <div class="eyebrow">自我測驗系統 · 第一階段</div>
+      <h1>海巡研究班25期考試題庫</h1>
+      <div class="subtitle">問答題與申論題自我檢核 · 資料僅儲存於本機瀏覽器</div>
+    </div>
+    <div class="top-stats">
+      <div class="stat"><span class="num" id="statTotal">0</span><span class="lbl">總題數</span></div>
+      <div class="stat"><span class="num" id="statKnown">0</span><span class="lbl">已熟悉</span></div>
+      <div class="stat"><span class="num" id="statWeak">0</span><span class="lbl">需加強</span></div>
+    </div>
+  </header>
+
+  <div class="mode-switch">
+    <button id="btnQuizMode" class="active">測驗模式</button>
+    <button id="btnBrowseMode">瀏覽模式</button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-h">出題方式</div>
+      <div class="chip-row" id="orderModeChips"></div>
+
+      <div class="side-h">主題篩選</div>
+      <ul class="folder-list" id="themeList"></ul>
+
+      <div class="side-h">題型</div>
+      <div class="chip-row" id="qtypeChips"></div>
+
+      <div class="toggle-row">
+        <span>隨機出題</span>
+        <div class="switch on" id="toggleShuffle"><div class="dot"></div></div>
+      </div>
+      <div class="toggle-row">
+        <span>只看「需加強」</span>
+        <div class="switch" id="toggleWeakOnly"><div class="dot"></div></div>
+      </div>
+
+      <div class="search-wrap" id="searchWrap" style="display:none;">
+        <input type="text" id="searchInput" placeholder="搜尋題目或答案內容…">
+      </div>
+
+      <button class="reset-btn" id="resetBtn">清除所有熟悉／需加強標記</button>
+    </aside>
+
+    <main class="panel" id="panel"></main>
+  </div>
+
+  <footer>本工具由 Word 題庫自動整理產生，內容請以原始題庫為準。</footer>
+</div>
+
+<script>
+const QUIZ_DATA = [{"theme": "壹、【法律】行政法專題研究", "qtype": "問答題", "marker": null, "question": "如何區別行政警察與司法警察？兩者的區別實益為何？", "answer": [{"level": 1, "text": "區別方式："}, {"level": 1, "text": "行政警察是為達成行政上目的之警察。"}, {"level": 1, "text": "司法警察則是從屬於刑事司法權作用，以搜索、逮捕犯罪嫌疑人為目的之警察。司法警察應是指組織上的警察，從事與犯罪偵查有關的司法警察活動者而言。簡言之，司法警察係指刑事訴訟法第229條至第231條各款中的「警察」。"}, {"level": 1, "text": "區別實益：由於執行法規之內容區分為「行政不法行為」及「刑事不法行為」，同時影響其行為屬性，乃至於救濟方式。"}, {"level": 1, "text": "行政秩序罰為一行政處分，其救濟方式依訴願法及行政訴訟法之規定，為訴願或行政訴訟。"}, {"level": 1, "text": "司法警察協助檢察官為犯罪偵查行為，而瑕疵之犯罪偵查行為，僅可能於司法訴訟中之證據不被採用，而影響司法判決，又其救濟方式係依上訴之方式為之。"}], "id": "0"}, {"theme": "壹、【法律】行政法專題研究", "qtype": "問答題", "marker": null, "question": "海巡人員面對一個具體行政事件，應優先移送給那一個行政機關，其判斷順序為何？", "answer": [{"level": 1, "text": "涉及刑事處罰："}, {"level": 1, "text": "行政罰法第26條第1項：一行為同時觸犯刑事法律及違反行政法上義務規定者，依刑事法律處罰之。但其行為應處以其他種類行政罰或得沒入之物而未經法院宣告沒收者，亦得裁處之。"}, {"level": 1, "text": "行政罰法第32條第1項：一行為同時觸犯刑事法律及違反行政法上義務規定者，應將涉及刑事部分移送該管司法機關。"}, {"level": 1, "text": "涉及行政處罰：行政罰法第31條第2項：一行為違反數個行政法上義務而應處罰鍰，數機關均有管轄權者，由法定罰鍰額最高之主管機關管轄。法定罰鍰額相同者，依前項規定定其管轄。"}], "id": "1"}, {"theme": "壹、【法律】行政法專題研究", "qtype": "問答題", "marker": null, "question": "海巡人員面對一個具體行政事件，有關於程序與方式之形式合法性要件，在法律規定上的適用順序為何？", "answer": [{"level": 1, "text": "海岸巡防法→後階機關主管法規及相關法規命令：區分實體法與程序法規定→裁罰：區分刑罰（行政罰法第26條）、行政罰（行政罰法第33條以下）或行政執行罰→行政程序法第92條以下之規定→行政程序法第91條以上之規定。"}], "id": "2"}, {"theme": "壹、【法律】行政法專題研究", "qtype": "問答題", "marker": "必考", "question": "行政機關面對具體行政事件，其認定事實之法律適用順序為何。(必考)", "answer": [{"level": 1, "text": "海岸巡防法第6條以下之規定。"}, {"level": 1, "text": "主管法規及相關法規命令：後階機關主管法規之規定。"}, {"level": 1, "text": "有無舉證責任轉換之規定（如行政罰法第7條第2項之「推定」）。"}, {"level": 1, "text": "當事人協力義務。"}, {"level": 1, "text": "特別職權調查手段（如海關緝私條例第6條以下之規定）。"}, {"level": 1, "text": "裁罰：後階機關主管法規之罰則規定。"}, {"level": 1, "text": "刑罰（行政罰法第26條）：刑事訴訟法第71條以下之規定。"}, {"level": 1, "text": "行政罰：行政罰法第33條以下之規定。"}, {"level": 1, "text": "行政程序法第36條以下之規定。"}], "id": "3"}, {"theme": "壹、【法律】行政法專題研究", "qtype": "問答題", "marker": null, "question": "如何判斷一個行政機關所涉及的案件是公法事件或私法事件？", "answer": [{"level": 1, "text": "法律規定：國家賠償；選舉訴訟；交通裁決"}, {"level": 1, "text": "關係："}, {"level": 1, "text": "人民對人民：私法"}, {"level": 1, "text": "國家機關對國家機關：公法"}, {"level": 1, "text": "國家對人民：原則公法、例外私法"}, {"level": 1, "text": "組織形式："}, {"level": 1, "text": "私法組織："}, {"level": 2, "text": "原則：私法"}, {"level": 2, "text": "例外：受託行使公權力（行程§ 2Ⅲ）；司法院釋字第305號"}, {"level": 1, "text": "公法組織：原則公法、例外私法"}, {"level": 1, "text": "行為形式："}, {"level": 1, "text": "單方："}, {"level": 2, "text": "法律行為：贈與： 社會給付、補貼：授益行政處分"}, {"level": 1, "text": "懸賞廣告：授益行政處分"}, {"level": 2, "text": "事實行為：警告、勸告、建議： 行政指導"}, {"level": 1, "text": "雙務："}, {"level": 2, "text": "事實行為：行政協定"}, {"level": 2, "text": "法律行為：公法契約與私法契約的區別："}, {"level": 3, "text": "契約之一方為行政機關。"}, {"level": 3, "text": "契約之內容係行政機關一方負有作成行政處分或其他公權力措施之義務 。"}, {"level": 3, "text": "執行法規規定原本應作成行政處分而以契約代替。"}, {"level": 3, "text": "約定內容涉及人民公法上權利義務關係。"}, {"level": 3, "text": "約定事項中列有顯然偏袒行政機關一方之條款，使行政機關享有特權或優勢之約定等因素綜合判斷。"}], "id": "4"}, {"theme": "壹、【法律】行政法專題研究", "qtype": "申論題", "marker": null, "question": "行政機關作成一個行政行為之合法性要件為何？", "answer": [{"level": 1, "text": "形式合法性要件"}, {"level": 1, "text": "主體"}, {"level": 2, "text": "行政機關：管轄機關與參與（協力）機關"}, {"level": 2, "text": "人民：相對人與利害關係人（第三人）"}, {"level": 1, "text": "程序"}, {"level": 2, "text": "資訊公開：閱覽卷宗／政府資訊公開"}, {"level": 2, "text": "程序透明 ："}, {"level": 3, "text": "通知：程序參與與決定：送達／公告"}, {"level": 3, "text": "陳述意見／聽證"}, {"level": 1, "text": "方式"}, {"level": 2, "text": "非要式（得請求要式）"}, {"level": 2, "text": "書面（要式）"}, {"level": 3, "text": "理由附記"}, {"level": 3, "text": "教示制度"}, {"level": 1, "text": "實質合法性要件"}, {"level": 1, "text": "認定事實沒有違誤："}, {"level": 1, "text": "職權調查的法律適用順序：海巡法第6條以下之規定→後階機關主管法規有無舉證責任轉換、當事人協力義務與職權調查的規定→ 裁罰：行政罰法第33條以下之規定→行政程序法第36條以下之規定"}, {"level": 1, "text": "適用法律沒有違誤："}, {"level": 2, "text": "構成要件該當性：包括不確定法律概念之無瑕疵判斷"}, {"level": 2, "text": "行政程序法第111條第4、5款："}, {"level": 3, "text": "所要求或許可之行為構成犯罪者。"}, {"level": 3, "text": "內容違背公共秩序、善良風俗者。"}, {"level": 2, "text": "違反其他法律與法律一般原則：行政程序法第4條以下，如明確性原則、平等原則、比例原則與誠信原則等"}, {"level": 1, "text": "得出法律效果沒有違誤"}, {"level": 2, "text": "內容事實上可能："}, {"level": 3, "text": "主體可能"}, {"level": 3, "text": "客體可能"}, {"level": 3, "text": "權利義務內容可能"}, {"level": 2, "text": "無瑕疵裁量或衡量: 行政程序法第10條"}], "id": "5"}, {"theme": "壹、【法律】行政法專題研究", "qtype": "申論題", "marker": null, "question": "試區別管制性行政處分與裁罰性行政處分？其區別實益為何？", "answer": [{"level": 1, "text": "裁罰性不利處分："}, {"level": 1, "text": "違反行政法上義務而受罰鍰、沒入或其他種類行政罰之處罰"}, {"level": 1, "text": "其他種類行政罰："}, {"level": 2, "text": "限制或禁止行為之處分：限制或停止營業、吊扣證照、命令停工或停 止使用、禁止行駛、禁止出入港口、機場或特定場所、禁止製造、販 賣、輸出入、禁止申請或其他限制或禁止為一定行為之處分。"}, {"level": 2, "text": "剝奪或消滅資格、權利之處分：命令歇業、命令解散、撤銷或廢止許 可或登記、吊銷證照、強制拆除或其他剝奪或消滅一定資格或權利之 處分。"}, {"level": 2, "text": "影響名譽之處分：公布姓名或名稱、公布照片或其他相類似之處分。"}, {"level": 2, "text": "警告性處分：警告、告誡、記點、記次、講習、輔導教育或其他相類 似之處分。"}, {"level": 1, "text": "管制性行政處分："}, {"level": 1, "text": "處分之內容為除去違法狀態或停止違法行為，或屬「預防性不利處分」、「保全措施」或「行政執行方法」者，皆不具裁罰性，例如："}, {"level": 1, "text": "不法利得之追繳。（除去違法狀態）"}, {"level": 1, "text": "違法狀態之限期改善。（除去違法狀態）"}, {"level": 1, "text": "有害人體健康物品之停止販售、回收改正。（預防性不利處分）"}, {"level": 1, "text": "欠稅者之限制出境。（保全措施）"}, {"level": 1, "text": "有關直接、間接強制或即時強制之規定。（行政執行方法）"}, {"level": 1, "text": "區別實益"}, {"level": 1, "text": "裁罰性行政處分優先適用行政罰法，行政罰法未規定者，適用行政程序法有關行政處分之規定；管制性行政處分直接適用行政程序法與行政執行法之規定"}, {"level": 1, "text": "舉證責任要求強度不同："}, {"level": 2, "text": "證明程度"}, {"level": 3, "text": "管制性行政處分：高度蓋然性（蓋然率75％以上）"}, {"level": 3, "text": "裁罰性不利處分：幾近於真實的蓋然性（蓋然率99.8％以上，或稱真實確信的蓋然性"}, {"level": 2, "text": "當事人協力義務"}, {"level": 3, "text": "管制處分：合理減輕稽徵機關的證明程度，惟最低程度仍不得低於優勢蓋然性（超過50％之蓋然率，或稱較強的蓋然性）"}, {"level": 3, "text": "裁罰處分：當事人並無協力義務或責任以自證己罪或自證無違規事實"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "6"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "問答題", "marker": null, "question": "犯罪偵查證據蒐集保全，有關「科技偵查」法律規範整類要件，試簡述之?", "answer": [{"level": 1, "text": "為能確保犯罪調查手段，得隨科技發展日益精進，兼顧人民基本權益之保障，刑事訴訟法於第十一章之一「特殊強制處分」(刑訴法第153之1~第153之10)，包括:"}, {"level": 1, "text": "GPS偵查：使用全球衛星定位系統(非以辨識個人生物特徵)之科技方法追蹤位置。"}, {"level": 1, "text": "M化車偵查：使用M化偵查網路系統，調查行動通訊設備之位置、設備號碼或使用之卡片號碼。"}, {"level": 1, "text": "監看偵查：從具隱私或秘密合理期待之空間外，使用非實體侵入性方法對空間內之人或物監看及攝錄影像等強制處分。"}], "id": "7"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "問答題", "marker": null, "question": "毒駕案件頻傳，有關司法警察取得唾液進行快篩之規範作為，試簡述之?", "answer": [{"level": 1, "text": "參考刑事訴訟法第205條之2規定，檢察事務官、司法警察官或司法警察在調查犯罪及蒐集證據的必要時，對於被拘提或逮捕的犯罪嫌疑人或被告，可以違反其意願採取指紋、掌紋、腳印等證據，並可進行照相、測量身高等行為。若有相當理由認為採取毛髮、【唾液】、尿液等可作為犯罪證據時，也可進行採取。"}], "id": "8"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "問答題", "marker": null, "question": "為能發現可疑對象確認犯罪嫌疑，司法警察依法如何實施職權查證特定人犯?", "answer": [{"level": 1, "text": "參考警察職權行使法第6、7條等規定："}, {"level": 1, "text": "警察於公共場所或合法進入之場所，得對於「合理懷疑其有犯罪之嫌疑或有犯罪之虞者」查證其身分。"}, {"level": 1, "text": "另查證人民身分，得採取下列之必要措施："}, {"level": 1, "text": "攔停人、車、船及其他交通工具。"}, {"level": 1, "text": "詢問姓名、出生年月日、出生地、國籍、住居所及身分證統一編號等。"}, {"level": 1, "text": "令出示身分證明文件。"}, {"level": 1, "text": "有明顯事實足認其有攜帶足以自殺、自傷或傷害他人生命或身體之物者，得檢查其身體及所攜帶之物。"}, {"level": 1, "text": "顯然無法查證身分時，警察得將該人民帶往勤務處所查證。"}], "id": "9"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "問答題", "marker": null, "question": "為能確保審判更為簡易、親近人民，試簡述我國實施人民參與審判之制度?", "answer": [{"level": 1, "text": "國民法官：經選任的民眾全程參與審理，就刑事案件的事實認定、法律適用與量刑，與法官共同討論，共同表決，做出決定。"}, {"level": 1, "text": "適用案件：本刑10年以上有期徒刑之罪、故意犯罪因而發生死亡結果。"}], "id": "10"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "問答題", "marker": null, "question": "死刑判決總是民眾關注焦點，有關司法警察偵辦死刑案件之正當程序，試簡述之?", "answer": [{"level": 1, "text": "考量強制辯護制度於重罪案件之程序保障功能，如最重本刑為死刑，應承認犯罪嫌疑人於司法警察官或司法警察調查時，有受律師協助之憲法上權利，俾有效行使訴訟上防禦權，以減少錯誤冤獄，並協助發現真實。"}], "id": "11"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "申論題", "marker": null, "question": "甲警實施路檢見X神情緊張、刻意逃避並試圖離開，乃驅前攔停並要求其出示證件但遭拒絕。現甲警若疑其有使用毒品情形，欲確認X有無吸毒，試問依法應如何進行相關生理跡證採樣？", "answer": [{"level": 1, "text": "依警察職權行使法第6條、第7條規定，對於X神情緊張、刻意逃避、拒絕出示證件，甲警得進行攔停、詢問、檢查以及帶回等等臨檢盤查行為。"}, {"level": 1, "text": "惟刑訴法第205條之2第1項規定:「檢察事務官、司法警察官或司法警察因調查犯罪情形及蒐集證據之必要，對於經拘提或逮捕到案之犯罪嫌疑人或被告，得違反其意思，採取其指紋、掌紋、腳印、照相、測量身高等；有相當理由認為毛髮、唾液、聲調或吐氣得作為犯罪證據時，亦得採取」。參考111年憲判字第16號判決的論據，尿液(唾液)含有大量個人醫療、生理及健康資訊，涉及憲法第22條保障之資訊隱私權、憲法第22條保障之身體權，因此若欲強制採尿，必須有更完善的正當法律程序保障。因此，本條項規範適用，甲警僅能進行「非侵入性」採取唾液行為。"}, {"level": 1, "text": "甲警雖得依《警察職權行使法》實施臨檢及查證身分，但欲違反X意思採取唾液快篩，須符合刑事訴訟法第205條之2第1項要件，即X已經合法拘提或逮捕到案，且有相當理由認為唾液得作為犯罪證據。若僅係臨檢或查證身分階段，尚未合法拘提或逮捕，即不得援引第205條之2逕行強制採取唾液。反之，如已合法拘提或逮捕，則司法警察官或司法警察得依法違反其意思採取唾液作為犯罪證據。再者，進行本項採取行為24小時內，事後層報檢察官補發鑑定許可書。"}], "id": "12"}, {"theme": "貳、【法律】刑事訴訟法專題研討", "qtype": "申論題", "marker": null, "question": "請依上課的課程主題、內容，就桃園地方法院的參訪旁聽過程，說明可能的疑義以及如何釋疑?", "answer": [{"level": 1, "text": "就參訪過程，若能提出涉及前述【問答題】議題範圍，並能稍作上課內容的說明應用，即可給予高分。"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "13"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "問答題", "marker": null, "question": "漁業法所稱「娛樂漁業」應有之要件為何？（娛樂漁業之定義）", "answer": [{"level": 1, "text": "供以娛樂為目的者。"}, {"level": 1, "text": "在水上或載客登島嶼、礁岩採捕水產動植物。"}, {"level": 1, "text": "在水上觀光之漁業。"}], "id": "14"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "問答題", "marker": null, "question": "依漁業法施行細則規定，漁業人出海時，不得有哪些行為？", "answer": [{"level": 1, "text": "違法從事非漁業行為。"}, {"level": 1, "text": "違反主管機關有關作業時限及船員員額之限制。"}, {"level": 1, "text": "販賣或將漁業動力用油移作他用。"}, {"level": 1, "text": "非法進入外國海域。"}], "id": "15"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "問答題", "marker": null, "question": "依漁業法第48條規定，採捕水產動植物，不得以哪些方法為之？其罰則為何？", "answer": [{"level": 1, "text": "採捕水產動植物，不得以下列方法為之："}, {"level": 1, "text": "使用毒物。"}, {"level": 1, "text": "使用炸藥或其他爆裂物。"}, {"level": 1, "text": "使用電氣或其他麻醉物。"}, {"level": 1, "text": "罰則：處一年以上五年以下有期徒刑、拘役或併科新臺幣十五萬元以下罰金"}], "id": "16"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "問答題", "marker": null, "question": "依漁港法第18條規定，漁港區域內禁止之行為有哪些？如有違反前揭事項者，則由哪個機關採取措施制止之？", "answer": [{"level": 1, "text": "漁港區域內禁止下列行為："}, {"level": 1, "text": "危害安全及妨礙船舶航行行為。"}, {"level": 1, "text": "排放有毒物質、有害物質、廢油。"}, {"level": 1, "text": "排放廢污水或任意投棄廢棄物。"}, {"level": 1, "text": "採捕或養殖水產動植物。"}, {"level": 1, "text": "其他經主管機關依法公告禁止之行為。"}, {"level": 1, "text": "海洋委員會海巡署。"}], "id": "17"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "問答題", "marker": null, "question": "民眾於「非公告開放垂釣之漁港」區域內採捕水產動植物，海巡執勤人員應如何處置？", "answer": [{"level": 1, "text": "依漁港法第18條第1項第4款規定，在漁港區域內不得採捕或養殖水產動植物，違者依同法第21條規定處行為人或其雇用人新臺幣3萬元以上15萬元以下罰鍰，海巡機關人員發現或經通報有民眾欲於「非公告開放垂釣漁港」區域從事垂釣等採捕行為，應先行實施勸導，如不聽勸導，則以通報漁港主管機關等適當措施制止，並蒐證函送各該漁港主管機關處理。"}, {"level": 1, "text": "民眾拒絕或規避身分之查證，經勸導無效，致確實無法辨認其身分且情況急迫者，依行政罰法第34條第1項第4款規定，得令其隨同到指定處所查證身分；其不隨同到指定處所接受身分查證者，得會同警察人員強制執行之，民眾於公告開放漁港區域垂釣時，不受漁港法第18條第1項第4款限制，惟仍不得從事垂釣以外之其他採捕等限制行為違反者依本處置程序處理。"}], "id": "18"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "申論題", "marker": null, "question": "我國籍「海湖」號(CT4-1234)漁船返港時，安檢人員發現船上漁獲物為整箱包裝，疑似非自行採捕漁獲，試問後續該如何處置？", "answer": [{"level": 1, "text": "應即查明其出海作業天數、船上漁船設備、魚獲數量種類以及其作業海域之漁汛資料等，並經調查船長及船員後，提供「漁船載運漁產品是否自行捕獲諮詢表」及相關資料傳送漁業署諮詢判定，以研判其是否為非法海上交易或走私進口漁產品，諮詢表認定期間漁產品先行扣留於船上。"}, {"level": 1, "text": "（二）倘該漁船所載漁獲為行政院農業委員會農業部公告之正面表列17項水產品者，可逕行判定為私運貨物 (走私進口漁產品)，即可依海關緝私條例等相關規定移送關務署各分關處分；非屬行政院農業委員會農業部公告之正面表列17項水產品又無法判定是否為自行捕獲水產品，經諮詢漁業署協助判定為非自行捕獲者，應以私運貨物行為移送關務署各分關處分。"}, {"level": 1, "text": "（三）查獲之走私進口漁產品屬走私進口農產品處理要點第3點附表「走私進口農產品處理項目表」所列30項大宗生產或敏感性須通過檢疫之漁產品，經海關沒入處分確定、檢察官執行沒收，或有腐敗、毀損之虞或易生危險之物，由漁業署銷毀者，應將漁產品之種類、規格及重（數）量通知該署委託處理之基隆、花蓮、高雄或澎湖區漁會及該管縣（市）政府漁政單位，辦理提領及押運事宜，並副知漁業署。區漁會提領即送往銷毀，倘區漁會無法立即提領銷毀，貨物可暫由海關保管；非屬走私進口農產品處理要點第3點附表「走私進口農產品處理項目表」所列之漁獲則送海關銷毀。"}], "id": "19"}, {"theme": "參、【法律】漁事法規專題研討", "qtype": "申論題", "marker": null, "question": "颱風或天候惡劣時，當地縣（市）政府已劃定警戒區域，海巡執勤人員對岸際逗留、觀浪等活動之民眾該如何處置？", "answer": [{"level": 1, "text": "應善盡勸導責任，並以言詞告知該地區業經縣（市）政府劃定公告為警戒區域，違法進入或逗留，依災害防救法第55條第1項第2、3款，可處新臺幣5萬元以上25萬元以下罰鍰外，另將予強制執行。"}, {"level": 1, "text": "如民眾仍欲進入或繼續於岸際、港口等警戒區域逗留觀浪、撿拾漂流木或從事釣魚等活動，應立即開立違反災害防救法勸導書表給予當事人，經勸導仍不聽從者，應即開立舉發單，並依違反災害防救法第30條第1項第2、3款檢具相關事證（相片、錄音、錄影帶）函送縣（市）政府，另依行政執行法第27、28及32條，採取直接強制手段禁止其進入或命其離去，惟仍應注意比例原則之適用。"}, {"level": 1, "text": "視現場狀況，向地方縣（市）政府應變中心指揮官反應，請其調派能量共同執行相關勸導、舉發及函送等作為。"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "20"}, {"theme": "肆、【法律】船舶碰撞刑事管轄權案例研討", "qtype": "問答題", "marker": null, "question": "某甲在一船舶碰撞事故中，為何即使對碰撞事故無過失，仍負法定救助義務？", "answer": [{"level": 1, "text": "《船員法》第74條規定，船舶碰撞後，各碰撞船舶船長，在不甚危害自己船舶、海員或旅客之範圍內，應盡力救助其他船舶、船員及旅客。在尚未確知繼續救助無益以前，原則上亦應停留於事故地點，並通知他船自己的船名、船籍港及航行資料。"}, {"level": 1, "text": "此外，《船員法》第75條對於淹沒或其他危難中之人員，亦設有一般人命救助義務。《海商法》第109條同樣規範碰撞後各船船長對他船、船員及旅客之救助、停留及船舶資訊交換義務；第102條亦涉及海難中之人命救助義務。"}, {"level": 1, "text": "因此，即使某甲對碰撞本身完全無過失，仍因法律明文規定而對落水漁民負有救助及保護義務。"}], "id": "21"}, {"theme": "肆、【法律】船舶碰撞刑事管轄權案例研討", "qtype": "問答題", "marker": null, "question": "承接上題，倘若某甲對於另外一艘落水的若干尚有生命徵候之漁民，見死不救，即離開現場，是否會構成第 294 條違背義務遺棄罪？", "answer": [{"level": 1, "text": "《刑法》第 294 條要求行為人對「無自救力之人」依法令或契約負有扶助、養育或保護義務，卻故意將其遺棄，或故意不提供維持其生存所必要之扶助、養育或保護。"}, {"level": 1, "text": "本案中，多名漁民落水後漂浮水面呼救，無法自行脫離海上危險，可認屬「無自救力之人」。某甲又依《海商法》及《船員法》負有法定救助義務。"}, {"level": 1, "text": "因此某甲明知落水人員尚生存且需要立即救助，仍故意不停船、不救助並駛離，即成立第294條第1項之違背義務遺棄罪。但若被害人在碰撞當下即已死亡，後續不救助即不能再成立對該死者「維持其生存所必要之扶助」。"}], "id": "22"}, {"theme": "肆、【法律】船舶碰撞刑事管轄權案例研討", "qtype": "問答題", "marker": null, "question": "外國籍船舶於我國「領海」無害通過期間發生碰撞事故，我國海巡機關若欲實 施刑事管轄權（刑事干涉），依 UNCLOS (《聯合國海洋法公約》)第27條須符合哪些法定例外條件？", "answer": [{"level": 1, "text": "依據UNCLOS第27條之規定，外國船舶在無害通過領海期間，沿海國原則上不應對船上人員行使刑事管轄權。我國海巡機關僅得在符合以下法定例外條件下，方可對領海內發生碰撞之外國船舶進行刑事干涉："}, {"level": 1, "text": "碰撞之犯罪後果擴及於沿海國（例如：碰撞導致我國領海內之他船沈沒、我國籍船員重大人身傷亡，或我國港航設施遭受實質損害）。"}, {"level": 1, "text": "碰撞行為已打擾沿海國的安寧或領海之良好秩序。"}, {"level": 1, "text": "經涉案外國船舶之船長，或船旗國的外交代表或領事官員請求沿海國提供協助。"}, {"level": 1, "text": "碰撞船舶剛好涉及非法販運麻醉藥品或精神調理物質之特定情事。"}], "id": "23"}, {"theme": "肆、【法律】船舶碰撞刑事管轄權案例研討", "qtype": "問答題", "marker": null, "question": "我國司法實務早期稱呼領域外之我國籍船舶為「浮動領土」，但在現代國際法學理與各國刑事立法實踐上，對於船舶刑事管轄權的本質有何修正？", "answer": [{"level": 1, "text": "早期實務之「浮動領土」論點：我國《刑法》第3條後段規定「在中華民國領域外之中華民國船艦或航空器內犯罪者，以在中華民國領域內犯罪論」。我國司法實務早期受「浮動島嶼」理論之影響，常將領域外之我國籍船舶稱為「浮動領土」，藉此擴張屬地原則之適用。"}, {"level": 1, "text": "現代國際法學理之修正：「將船舶視為領土延伸」的擬制論述，在現代國際法上已被否定。若船舶真屬領土延伸，則任何對外國船舶之登臨檢查均將構成對他國主權的領土侵犯，管轄權發動的本質是以「船舶國籍」作為連接因素，由船旗國透過船舶國籍，對該船舶及其上之人員行使「屬人主權」，而非將其視為實體領土。"}], "id": "24"}, {"theme": "肆、【法律】船舶碰撞刑事管轄權案例研討", "qtype": "問答題", "marker": null, "question": "依據我國《船舶法》之明文規定，船舶於航行時，負有何種與「船舶自動識別系統」（AIS）運作相關的法定行政義務？又此法定行政義務在刑事法的效果為何？", "answer": [{"level": 1, "text": "維持正常運作與發送正確資訊之義務：依據我國《船舶法》第8條之1第1項之規定，船舶應維持船舶自動識別系統（AIS）船載臺正常運作，並發送正確之船舶識別資訊。"}, {"level": 1, "text": "故障時之通報義務：依據同條第2項之規定，若系統故障，應立即通報航政機關，並按時通報船舶位置。"}, {"level": 1, "text": "違反上述規定者，依同法第89條之1，得處新臺幣3萬元以上1,000萬元以下罰鍰。在刑事訴訟中，故意關閉 AIS 亦常被司法機關視為違反客觀安全注意義務、故意隱匿航行狀況之重要不利益證據。"}], "id": "25"}, {"theme": "肆、【法律】船舶碰撞刑事管轄權案例研討", "qtype": "申論題", "marker": null, "question": "中華民國籍貨輪「福爾摩沙號」與菲律賓籍商船「馬尼拉之星號」，於距離我國領海基線約35浬之海域發生船舶碰撞事故。碰撞造成「福爾摩沙號」上多名中華民國籍船員受傷，其中一名中華民國籍水手落水死亡。海難調查認定，事故主要肇因於「馬尼拉之星號」當值之菲律賓籍大副A，在濃霧及能見度受限制之情形下，未依《1972年國際海上避碰規則》（COLREGs）保持適當瞭望，並未以安全航速航行。事故後，「馬尼拉之星號」自願進入我國高雄港裝卸貨物。我國海巡署及檢警單位隨即在港區登臨該船，並以涉嫌我國《刑法》第 276 條過失致死罪，將菲律賓籍大副 A 逮捕並提起公訴。 問題(一)：大副A之過失操船行為發生於菲律賓籍船舶「馬尼拉之星號」上，但 我國籍船員之死亡及受傷結果發生於中華民國籍「福爾摩沙號」上時，我國 《刑法》或相關刑事制裁之法令是否適用於本案？ 問題(二)：UNCLOS(《聯合國海洋法公約》)第 97 條及常設國際法院1927年蓮花號案例對於本案之適用為何？是否支持我國刑法對於該碰撞案件之適用？", "answer": [{"level": 1, "text": "問題(一)："}, {"level": 1, "text": "刑法第 3 條後段(犯罪行為地)："}, {"level": 1, "text": "我國《刑法》第3條前段採屬地原則，第3條後段則規定，在中華民國領域外之中華民國船艦或航空器內犯罪者，以在中華民國領域內犯罪論。因此，「福爾摩沙號」雖可依第3條後段視同中華民國領域，但「馬尼拉之星號」係菲律賓籍船舶，並不能因其與中華民國船舶發生碰撞，即被視為中華民國領域。故A在「馬尼拉之星號」上未保持適當瞭望及未維持安全航速之行為，不能僅憑《刑法第3條後段直接視為在我國領域內實施。"}, {"level": 1, "text": "《刑法》第4條(犯罪結果地)："}, {"level": 1, "text": "《刑法》第4條規定，犯罪之行為或結果有一在中華民國領域內者，即為在中華民國領域內犯罪。本案A之過失操船行為雖發生於菲律賓籍船舶，但死亡及傷害結果發生於中華民國籍「福爾摩沙號」上。"}, {"level": 1, "text": "小結："}, {"level": 1, "text": "A之行為本身不能因《刑法》第3條後段直接視為在我國領域內，但因犯罪結果發生於我國籍船舶，《刑法》第3條後段結合第4條，將本案作為是在中華民國領域內犯罪之法律依據。"}, {"level": 1, "text": "問題(二)："}, {"level": 1, "text": "蓮花號案支持我國刑法對於該碰撞案件之適用，說明如次："}, {"level": 2, "text": "該案之事實為法國籍船舶蓮花號與土耳其籍船舶在公海碰撞，造成土耳其船上人員死亡；法國值班官員隨船進入土耳其，土耳其遂逮捕並起訴他。"}, {"level": 2, "text": "常設國際法院（PCIJ）認為：碰撞犯罪雖有一部分行為發生在法國船上，但犯罪的死亡效果發生在土耳其船舶上。法院因而接受土耳其對此事件具有刑事管轄連結，而非認為只有法國船旗國可以管轄。也就是：該案以犯罪效果發生在土耳其船舶，即相當於發生於土耳其領域的邏輯，支持土耳其管轄。"}, {"level": 2, "text": "該案之判決與我國《刑法》第3條後段結合第4條之結論相同。換言之，蓮花號案是支持我國刑事管轄的重要歷史國際判決。"}, {"level": 1, "text": "UNCLOS(《聯合國海洋法公約》)第97條並不支持我國刑法對於該碰撞案件之適用，說明如次："}, {"level": 2, "text": "UNCLOS(《聯合國海洋法公約》)第97條第1項規定："}, {"level": 2, "text": "在公海發生船舶碰撞或其他航行事故，涉及船長或其他服務於該船人員之刑事或懲戒責任時，不得對該人提起刑事或懲戒程序，除非是由船旗國的司法或行政機關；或者該人的國籍國的司法或行政機關所提起。就本案而言，依據第97 條能提起的刑事或懲罰程序之船旗國為菲律賓，而不是受害船「福爾摩沙號」的船旗國，即中華民國。國籍國亦為菲律賓，而非受害者之中華民國。"}, {"level": 2, "text": "UNCLOS(《聯合國海洋法公約》)第58條第2項規定："}, {"level": 2, "text": "儘管本案之發生地點在我國專屬經濟海域，但第58條第2項規定: 「UNCLOS 第88條至第115條，以及其他有關國際法規則，在與第五部分專屬經濟海域制度不相牴觸的範圍內，適用於專屬經濟海域。」因此船舶碰撞位置即使是距基線 35 浬、屬我國的專屬經濟海域非公海，第97條仍然適用於本案。"}, {"level": 2, "text": "小結：承上所述，國際海洋法之相關規定並不支持我國刑法或相關刑事制裁規定適用於本案。"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "26"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "問答題", "marker": null, "question": "請問依刑事訴訟法列舉之「法定證據方法」為何?", "answer": [{"level": 1, "text": "被告之自白、人證、文書、鑑定及勘驗。"}], "id": "27"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "問答題", "marker": null, "question": "請問依刑事訴訟法規定，人別訊問應詢問那些資料?", "answer": [{"level": 1, "text": "姓名、年齡、籍貫、職業、住所或居所。"}], "id": "28"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "問答題", "marker": null, "question": "請問依刑事訴訟法95條規定訊問被告應先告知那些權利事項?", "answer": [{"level": 1, "text": "犯罪嫌疑及所犯所有罪名。罪名經告知後，認為應變更者，應再告知。"}, {"level": 1, "text": "得保持緘默，無須違背自己之意思而為陳述。"}, {"level": 1, "text": "得選任辯護人。如為低收入戶、中低收入戶、原住民或其他依法令得請求法律扶助者，得請求之。"}, {"level": 1, "text": "得請求調查有利之證據。"}], "id": "29"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "問答題", "marker": null, "question": "請問依刑事訴訟法第100條之三規定司法警察官或司法警察詢問犯罪嫌疑人，不得於夜間行之。但有那列情形不在此限?", "answer": [{"level": 1, "text": "經受詢問人明示同意者。"}, {"level": 1, "text": "於夜間經拘提或逮捕到場而查驗其人有無錯誤者。"}, {"level": 1, "text": "經檢察官或法官許可者。"}, {"level": 1, "text": "有急迫之情形者。"}], "id": "30"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "問答題", "marker": null, "question": "常見的偵訊方法有那些?", "answer": [{"level": 1, "text": "心理疏導法。"}, {"level": 1, "text": "突擊訊問法。"}, {"level": 1, "text": "直接訊問法。"}, {"level": 1, "text": "迂迴訊問法。"}, {"level": 1, "text": "綜合訊問法。"}, {"level": 1, "text": "相互對質法。"}], "id": "31"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "申論題", "marker": null, "question": "某日早上警方持搜索票搜索被告甲住處，查獲諸多作案證據後，於當日下午15時開始詢問甲，起先甲均保持緘默或僅回答不知道，經警方陸續出示多項扣案證據及其他共犯筆錄後，直至該日20時左右，甲認為大勢已去，自白可能還有減刑之機會，遂自白犯罪。後甲遭檢察官起訴，審理時甲均否認犯罪，法院仍採用甲於前述警詢筆錄自白作為判決甲有罪證據之一。試問甲之筆錄是否具有證據能力?", "answer": [{"level": 1, "text": "本案違反禁止夜間詢問："}, {"level": 1, "text": "依刑事訴訟法(下同)第100條之3第1項，司法警察(官)詢問犯罪嫌疑人，除有經受詢問者同意、夜間拘捕到場查驗人別、經檢察官或法官許可者或有急迫情形者外，不得於夜間詢問犯罪嫌疑人，以確保其自白之任意性。"}, {"level": 1, "text": "所謂「夜間」依第100條之3第3項，應為日出前、日沒後。正確之時點依中央氣象署發布為準。"}, {"level": 1, "text": "本案中，甲於20時始自白犯罪，屬夜間詢問下為之自白，而20時無論夏冬均已進入夜間，故應禁止夜間詢問。"}, {"level": 1, "text": "違反夜間詢問之法律效果"}, {"level": 1, "text": "依158條之2第1項，違反第100條之3規定，所取得被告或犯罪嫌疑人之自白及其不利之陳述，不得作為證據。但經證明其違背非出於惡意，且該自白或陳述出於自由意志者，不在此限。"}, {"level": 1, "text": "違反第100條之3規定，原則上該自白不得作為證據，但如具有自白任意性，且司法警察(官)為善意，即例外得認為該自白具有證據能力。"}, {"level": 1, "text": "本案甲之自白犯罪係認為大勢已去，自白可能獲得減刑，應認甲係在具有任意性情況下所為自白，且司法警察(官)亦為善意非蓄意違反。因此，甲之自白應具有證據能力。"}], "id": "32"}, {"theme": "壹、【專業】偵訊筆錄製作與移送程序專題研討", "qtype": "申論題", "marker": null, "question": "司法警察於詢問被告（或犯罪嫌疑人）時，未依刑事訴訟法第 100 條之1第1項規定進行全程連續錄音或錄影。嗣後該筆錄記載被告坦承犯罪，惟被告於法院審理時辯稱：警察在錄音中斷期間對其施以恐嚇，其自白不具任意性。請依刑事訴訟法相關規定與實務見解，分析下列問題： 1.該項「錄音錄影」規定之立法目的為何？ 2.違反全程錄音錄影規定所製作之「自白筆錄」，其證據能力應如何判斷？", "answer": [{"level": 1, "text": "刑事訴訟法第 100 條之 1 第 1 項之立法目的："}, {"level": 1, "text": "刑事訴訟法第 100 條之 1 第 1 項規定：「訊問被告，應全程連續錄音；必要時，應全程連續錄影。但有急迫情況且經記明筆錄者，不在此限。」其立法目的主要有三："}, {"level": 1, "text": "擔保自白之任意性：透過客觀的錄音、錄影，事後查證訊問過程是否符合法定程序，有無使用不正手段（如暴力、威脅、利誘）。"}, {"level": 1, "text": "2.確保筆錄記載之正確性：核對筆錄內容是否與受詢問人之陳述相符，避免偵查人員斷章取義或誤解。"}, {"level": 1, "text": "3.保障被告權利與偵查品質：錄音錄影可作為偵查程序合法性之證據，一方面保障被告人權，另一方面也能避免偵查人員遭受不實的刑求指控。"}, {"level": 1, "text": "違反錄音錄影規定之筆錄證據能力判斷："}, {"level": 1, "text": "針對違反「全程連續錄音錄影」所得筆錄之證據能力，實務與學說見解如下："}, {"level": 1, "text": "是否構成「不正訊問」（刑事訴訟法第 156 條第 1 項）："}, {"level": 1, "text": "若錄音中斷係因訊問人故意為之，且被告主張該期間受有不正手段對待，則："}, {"level": 2, "text": "被告若提出「自白不具任意性」之具體爭執，法院應依第156條第3項規定，由檢察官負舉證責任。"}, {"level": 2, "text": "若檢察官無法透過錄音、錄影或其他證人（如律師、其他警員）證明訊問過程之合法性，該自白即應推定為不具任意性，不具證據能力。"}, {"level": 1, "text": "錄音中斷但自白具任意性時之判斷（刑事訴訟法第158條之4）："}, {"level": 1, "text": "若錄音中斷係因「設備故障」或「疏忽」所致，且法官綜合其他情狀認被告之自白仍具任意性（自願陳述），其證據能力之判定如下："}, {"level": 2, "text": "第 100 條之 1 第 2 項之適用：該項規定筆錄內容與錄音（影）不符者，該不符之部分，不得作為證據。"}, {"level": 2, "text": "權衡原則之運用：實務見解（如最高法院 92 年台上字第 4003 號判決）認為，錄音錄影僅為擔保手段，非唯一要件。若僅係程序違法（漏未錄音），應依刑事訴訟法第 158 條之 4 之規定，進行「人權保障」與「公共利益」之權衡，權衡因素如下："}, {"level": 3, "text": "違背法定程序之主觀動機（故意或過失）。"}, {"level": 3, "text": "被害人權益之受損程度。"}, {"level": 3, "text": "證據之重要性與犯罪危害程度。"}, {"level": 1, "text": "結論："}, {"level": 1, "text": "本案中，被告已具體主張司法警察有恐嚇行為，若錄音中斷期間確實無法透過錄影或其他補強證據證明其自白之任意性，依第156 條規定，該筆錄應排除其證據能力。縱認其自白係出自任意性，法官仍應審酌該違法取得證據之情節，依第158條之4裁量是否排除。"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "33"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "問答題", "marker": null, "question": "請問海巡「船筏評鑑」的要旨?", "answer": [{"level": 1, "text": "係為有效管理轄區漁船(筏)動態，藉由平時轄區經營，並運用安檢資訊系統分析曾涉案之漁船(筏)動態，以「人追船」、「船追人」之方式，深入瞭解漁船員生活慣性，區分良莠，以有效分類，俾利安檢勤務執行。"}], "id": "34"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "問答題", "marker": null, "question": "請問船筏評鑑分類之丁類對象所指為何？", "answer": [{"level": 1, "text": "娛樂漁業漁船。"}, {"level": 1, "text": "載有大陸船員入出港之船舶。"}, {"level": 1, "text": "兼營珊瑚漁業漁船。"}, {"level": 1, "text": "依「臺灣地區漁船航行至大陸地區許可及管理辦法」規定得航行至大陸地區之漁船。"}, {"level": 1, "text": "依「漁業人僱用私人武裝保全人員辦法」報備僱用私人武裝保全人員之漁船。"}, {"level": 1, "text": "其他法規明定應主動檢查之船舶或其他運輸工具。"}], "id": "35"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "問答題", "marker": null, "question": "請問船筏評鑑分類之乙類對象所指為何？", "answer": [{"level": 1, "text": "無違法紀錄，但最近三年內情資顯示或曾因安檢發現下列情形之一者："}, {"level": 1, "text": "漁船（筏）船體、輪機等疑有擅自變更或有變更跡象。"}, {"level": 1, "text": "攜帶與漁業證照不符之漁具或可資採捕水產動植物器材，並疑有使用跡象。"}, {"level": 1, "text": "經常有部分船員未事先完成僱用手續。"}, {"level": 1, "text": "經常發現本國籍幹部船員配置不足。"}, {"level": 1, "text": "疑有涉及走私、非法入出國、違反安全、漁業資源維護、海洋環境保護及保育等法令之其他跡象。"}], "id": "36"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "問答題", "marker": null, "question": "請簡述安檢所「可疑徵候蒐整」之基本要領?", "answer": [{"level": 1, "text": "各地區分署應指導岸巡隊及所屬安檢所，針對漁船安檢工作，充分運用「船筏外觀」、「船員言行」、「船筏狀態」、「船載物品」及「進出時機」等漁港安全檢查常見可疑徵候態樣(結合「人」、「船」、「時」、「事」、「物」等5面項)，主動查察(覺)可疑，俾使發動檢查有所憑藉。"}], "id": "37"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "問答題", "marker": null, "question": "有關破解密艙與密窩之法，請問丈量法的運用時機及位置?", "answer": [{"level": 1, "text": "時機：對於船體各艙間查覺有異時，透過丈量方式，找出可疑之密艙（窩）。"}, {"level": 1, "text": "位置：漁艙、機艙、及各種櫥櫃內外部。"}], "id": "38"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "申論題", "marker": null, "question": "海巡署「船舶風險等級安檢作法」將船舶風險等級區分為「低風險」及「高風險」，安檢人員依入、出港船舶態樣，評估其風險等級，相對應採取「目視檢查」或「登船檢查」等不同執檢方式，請就高風險船舶之檢查方式及檢查重點，結合自身工作經驗或觀點申論之。", "answer": [{"level": 1, "text": "檢查方式："}, {"level": 1, "text": "凡屬高風險船舶，安檢人員即以「登船檢查」方式實施安檢，並視情況攜帶探刺耙、金屬探測器、成套搜索鏡及電子內視鏡等安檢裝備。"}, {"level": 1, "text": "具有多項可疑徵候高風險船舶，應充分運用查艙專精小組與高科技安檢裝備(如X光透視檢查儀)，提升檢查強度；進港後，則由勤務人員或港區監視系統全程監控，其監控情形應登載於安檢資訊系統，可疑時應通報司法小隊及轄區查緝隊協處。"}, {"level": 1, "text": "檢查重點："}, {"level": 1, "text": "船舶吃水情形與漁獲量之比例。"}, {"level": 1, "text": "運用船舶布置圖確認有無改造船體之情形。"}, {"level": 1, "text": "檢查有無刻意掩飾(如油漆粉刷、大量堆積物)之表面或隱匿空間。"}, {"level": 1, "text": "核對船載人員之相關證書(船員手冊、幹部證書、漁業執照)及身分證明文件。"}, {"level": 1, "text": "觀察船員言行舉止，有無異常舉動或一反常態。"}, {"level": 1, "text": "船體有無洞眼痕跡或不成比例之封口痕跡。"}, {"level": 1, "text": "是否載有外國(大陸)製物品。"}, {"level": 1, "text": "其他經友軍單位研析發覺之可疑事項。"}, {"level": 1, "text": "自身工作經驗或觀點。"}], "id": "39"}, {"theme": "貳、【專業】安檢勤務專題", "qtype": "申論題", "marker": null, "question": "試申論漁船（筏）逃避或拒絕安檢之處置。（另請結合自身工作經驗或觀點申論之）", "answer": [{"level": 0, "text": "（常用勤務執行標準作業程序彙編2.3.1）"}, {"level": 1, "text": "法令依據："}, {"level": 1, "text": "國家安全法第5、14條及其施行細則第22、23及24條。"}, {"level": 1, "text": "海岸巡防法第3、4、5、6及7條。"}, {"level": 1, "text": "行政罰法第26條第1項、第2項。"}, {"level": 1, "text": "作業內容："}, {"level": 1, "text": "發動檢查以手勢、警示燈、紅色旗幟、哨音或其他輔助方式告知，警示船筏泊停於執檢區，接受檢查。"}, {"level": 1, "text": "應全程錄音、錄影(運用執檢區港區監控系統或其他蒐證器材，全程實施蒐證，保全證據)。"}, {"level": 1, "text": "經發動檢查，船舶有拒絕或逃避接受檢查行為時，仍應持續發動檢查，告知船長立即停船受檢。"}, {"level": 1, "text": "出港船筏拒絕檢查，通報雷哨鎖定及海巡艇查緝；進港船筏拒絕檢查，通報港巡、監卸人員或機動兵力前往支援，並記錄於安檢資訊系統及回報岸巡隊。"}, {"level": 1, "text": "查獲該船後，其如無正當理由，則涉及違反國家安全法第14條及海岸巡防法第6條第3項規定，此時應依行政罰法第26條第1項、第2項規定之刑事先行原則處理。"}, {"level": 1, "text": "處置時特須注重全程錄音(影)之蒐證作為，以作為後續偵辦作業之依據。"}, {"level": 1, "text": "自身工作經驗或觀點。"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "40"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "問答題", "marker": null, "question": "請簡述6點初抵犯罪現場之作為？", "answer": [{"level": 1, "text": "救護傷患。"}, {"level": 1, "text": "初判是否為刑案並進行通報。"}, {"level": 1, "text": "現場保全、封鎖。"}, {"level": 1, "text": "現場紀錄。"}, {"level": 1, "text": "逮捕嫌疑人。"}, {"level": 1, "text": "訪查關係人。"}], "id": "41"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "問答題", "marker": null, "question": "請舉例5種於犯罪現場可執行現場紀錄之方法？", "answer": [{"level": 1, "text": "照相。"}, {"level": 1, "text": "錄影。"}, {"level": 1, "text": "筆記。"}, {"level": 1, "text": "測繪。"}, {"level": 1, "text": "錄音。"}], "id": "42"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "問答題", "marker": null, "question": "請問來自犯罪現場的物證型態可分為哪5種？", "answer": [{"level": 1, "text": "短暫性證物。"}, {"level": 1, "text": "狀態性證物。"}, {"level": 1, "text": "型態性證物。"}, {"level": 1, "text": "移轉性證物。"}, {"level": 1, "text": "關聯性證物。"}], "id": "43"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "問答題", "marker": null, "question": "欲針對犯罪現場進行人員進出管制可拉起封鎖線，標準做法須實施幾道封鎖線?", "answer": [{"level": 1, "text": "3道。"}], "id": "44"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "問答題", "marker": null, "question": "承上題，封鎖線範圍內允許進出的工作人員分別為何?", "answer": [{"level": 1, "text": "第一道封鎖線內：鑑識人員。"}, {"level": 1, "text": "第一道與第二道封鎖線之間：鑑識人員、偵查人員、救護人員。"}, {"level": 1, "text": "第二道與第三道封鎖線之間：鑑識人員、偵查人員、救護人員、媒體記者。"}], "id": "45"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "申論題", "marker": null, "question": "吳小叡是一位菜鳥現場勘察人員，今天下午被派去勘察轄區內一件死亡案，他回想以前受訓學到的課程內容，想起教官曾經強調刑案證物監管鏈的重要性，試問該員在開始勘察採取前，至證物鑑定完畢領回階段，每一階段應採取什麼措施或注意何種要項，才能完備證物交接流程？", "answer": [{"level": 1, "text": "採取前：原則上必須取得「勘察採證同意書」、「搜索票」及「鑑定許可書」中任一種，始可進行勘察採證。"}, {"level": 1, "text": "採取後：製作「證物清單」一式二份，如所有人、保管人、當事人在場者，均須請其簽名確認。"}, {"level": 1, "text": "包裝及封緘：依證物類型分類，以適當證物袋包裝及封緘，並於封緘處蓋章及註明時間。另外於包裝袋外註明「案由」、「證物名稱」、「數量」、「採證位置」及「採證人姓名」等資料，以後續處理人員辨識。"}, {"level": 1, "text": "專人送驗：勿以郵件方式寄送，避免證物遺失，並確認送驗過程安全無虞，保持封緘完整性。"}, {"level": 1, "text": "簽收：證物鑑定單位清點確認無誤後，會於送驗證物單貼上專屬條碼或蓋上章戳，送驗人員亦須於管制簿上簽名確認。"}, {"level": 1, "text": "鑑定完畢領回：以親自領回原則，並確認由鑑定單位封緘完成。領回證物視案件偵辦進度，遞送地檢署證物室，或保存於機關證物室。"}], "id": "46"}, {"theme": "參、【專業】刑事科技及鑑識要領", "qtype": "申論題", "marker": null, "question": "課程撥放「麥森警殺妻案」影片中，在被害者屍體已被火化銷燬情況下，李昌鈺博士如何利用連結理論及路卡交換理論找尋犯罪現場物證？", "answer": [{"level": 1, "text": "駕駛座上遮陽板有沾血頭髮多次摔撞的痕跡(移轉理論)。"}, {"level": 1, "text": "駕駛座之車門有六角螺帽，沾有血跡毛髮，與被害者右臉上的深痕型態相符。"}, {"level": 1, "text": "在儀表上有數以百計的中速度血跡噴濺痕，經採證及痕跡表示為多次撞擊噴濺所致。"}, {"level": 1, "text": "在貨廂拉門上有一個拳頭血印與數枚血指印，顯示沿壁倒下。"}, {"level": 1, "text": "貨廂區域有泥土混雜著血也，分析發現先有泥土再有血液。"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "47"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "問答題", "marker": null, "question": "被告要求對質詰問的憲法依據為何？", "answer": [{"level": 1, "text": "第16條訴訟權。"}], "id": "48"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "問答題", "marker": null, "question": "何謂「當事人進行主義」？", "answer": [{"level": 1, "text": "關於犯罪事實認定事項，即證據調查與辯論，須由當事人主導。"}], "id": "49"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "問答題", "marker": null, "question": "關於犯罪事實的證據調查，為了形成法官對被告的有罪心證(即確認追訴事實成立)，應由檢察官還是被告負積極舉證責任？", "answer": [{"level": 1, "text": "檢察官。"}], "id": "50"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "問答題", "marker": null, "question": "關於犯罪事實的證據調查，阻礙追訴事實成立之證據，通常是由被告還是檢察官舉證？", "answer": [{"level": 1, "text": "被告。"}], "id": "51"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "問答題", "marker": null, "question": "司法警察以證人身分出庭，需經何等程序後，倘為不實陳述，方負有刑法偽證罪之責？", "answer": [{"level": 1, "text": "具結。"}], "id": "52"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "申論題", "marker": null, "question": "請就司法警察出庭作證「前」、出庭作證「中」、出庭作證「後」之三階段，各舉2個注意事項？", "answer": [{"level": 1, "text": "前階段：詳閱卷宗、案情摘要筆記、與一起出勤之同仁討論、詢問已經出庭過的同仁、回想偵查時檢察官傳訊的內容(或是否有出過職務報告)、必要時可請問檢察官、向長官報告。"}, {"level": 1, "text": "出庭中：服裝儀容整齊、準時到達、攜帶卷宗到庭、據實陳述、未經提問就不要插嘴、專心聆聽問題、態度不卑不亢、不要答非所問、注意電腦銀幕上打的筆錄內容是否符合你的回答、未經法官同意不得離席。"}, {"level": 1, "text": "出庭後：虛心檢討、調查不備(或證據缺漏)處以後辦案要改進、被告提出之質疑要作為以後辦案的警惕、向長官報告結果。"}, {"level": 1, "text": "(詳見「從「全民作證原則」談接受「交互詰問」應有之認知與注意事項」文章，頁碼第50、51頁有詳列。)"}], "id": "53"}, {"theme": "肆、【專業】司法警察出庭作證交互詰問要領", "qtype": "申論題", "marker": null, "question": "司法警察A、B、C三人星期六晚上執行緝毒勤務，於某夜市口攔檢販毒被告D時，D 開自小客車衝撞B，但B緊急跳開未受撞擊。A開公務車橫攔D之自小客車，D見無法繼續前行，D就開車大迴轉，駛上人行道往另一方向衝出。C見狀拔槍自後射擊D所駕車輛後輪，但其中1顆子彈誤中D左臂。D經逮捕送醫，左臂仍因不治遭截肢。D因憤恨遭查緝毒品買賣，遂對C提起重傷害罪之自訴程序。法院在審理本件自訴程序中，傳喚A、B為證人。請問：倘若A或B出庭作證前，來請教你，你會如何建議他？", "answer": [{"level": 1, "text": "(本題與題目一答案相同)"}, {"level": 0, "text": "海巡研究班25期  第一階段考試題庫"}], "id": "54"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "問答題", "marker": null, "question": "刑事偵查的情資來源為何？", "answer": [{"level": 1, "text": "工作關係、人脈、諮詢。"}, {"level": 1, "text": "自行發掘。"}, {"level": 1, "text": "民眾檢舉。"}, {"level": 1, "text": "網路巡察。"}, {"level": 1, "text": "另案偵辦。"}, {"level": 1, "text": "其他機關。"}], "id": "55"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "問答題", "marker": null, "question": "我國刑事訴訟法之搜索有哪幾種類型？", "answer": [{"level": 1, "text": "令狀搜索為原則："}, {"level": 1, "text": "提示搜索票(§128)。"}, {"level": 1, "text": "無令狀搜索為例外："}, {"level": 1, "text": "附帶搜索（§130）。"}, {"level": 1, "text": "逕行（緊急）搜索(§131)。"}, {"level": 1, "text": "同意搜索(§131-1)。"}], "id": "56"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "問答題", "marker": null, "question": "筆錄分哪幾種？", "answer": [{"level": 1, "text": "犯嫌筆錄。"}, {"level": 1, "text": "證人筆錄。"}, {"level": 1, "text": "檢舉筆錄。"}, {"level": 1, "text": "搜索、扣押筆錄。"}], "id": "57"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "問答題", "marker": null, "question": "立案偵辦的目的是什麼？", "answer": [{"level": 1, "text": "避免偵辦私案，令所有調閱相關資料皆有跡可循。"}], "id": "58"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "問答題", "marker": null, "question": "逮捕犯罪嫌疑人時須告知其何權利？", "answer": [{"level": 1, "text": "告知罪名。"}, {"level": 1, "text": "得行使緘默權。"}, {"level": 1, "text": "得請求辯護人。"}, {"level": 1, "text": "得請求調查有利證據。"}], "id": "59"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "申論題", "marker": null, "question": "請說明刑事偵查的基本程序及其意義。", "answer": [{"level": 1, "text": "刑事偵查一般從受理報案、蒐集線索開始，接著進行現場勘查、證據保全、詢問證人、訊問嫌疑人，必要時採取搜索、扣押等措施，最後整理卷證並移送偵辦。其意義在於透過合法程序查明犯罪事實，確保證據完整，並兼顧追訴犯罪與保障人權。"}], "id": "60"}, {"theme": "伍、【專業】刑事偵查注意事項", "qtype": "申論題", "marker": null, "question": "請說明搜索與扣押在偵查上的作用。", "answer": [{"level": 1, "text": "搜索與扣押是偵查中常見的重要強制處分。搜索的功能在於找出與案件有關的人、物或證據；扣押則是將已找到的證物加以保全，避免滅失或遭竄改。兩者可協助釐清案情、補強證據，但必須依法定程序進行，否則可能影響證據能力與合法性。"}], "id": "61"}];
+const THEMES = ["壹、【法律】行政法專題研究", "貳、【法律】刑事訴訟法專題研討", "參、【法律】漁事法規專題研討", "肆、【法律】船舶碰撞刑事管轄權案例研討", "壹、【專業】偵訊筆錄製作與移送程序專題研討", "貳、【專業】安檢勤務專題", "參、【專業】刑事科技及鑑識要領", "肆、【專業】司法警察出庭作證交互詰問要領", "伍、【專業】刑事偵查注意事項"];
+
+const STORAGE_KEY = 'haixun25_quiz_progress_v1';
+const state = {
+  mode: 'quiz',
+  orderMode: 'filter',     // 'filter' = 依篩選出題, 'custom' = 自選題目測驗
+  customSelected: new Set(),
+  customLocked: false,     // 自選模式下是否已鎖定題目清單、進入測驗
+  themes: new Set(THEMES),
+  qtypes: new Set(['問答題','申論題']),
+  shuffle: true,
+  weakOnly: false,
+  search: '',
+  order: [],
+  pos: 0,
+  revealed: false,
+};
+
+function loadProgress(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){ return {}; }
+}
+function saveProgress(p){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }catch(e){}
+}
+let progress = loadProgress();
+
+// 使用者作答內容僅保留在記憶體中（不寫入 localStorage），
+// 且每次切換題目、變更篩選條件時都會清空，只有熟悉/需加強標記會持續保存。
+let userAnswers = {};
+
+function statusOf(id){ return progress[id] || 'new'; }
+function setStatus(id, s){
+  if(progress[id] === s){ delete progress[id]; } else { progress[id] = s; }
+  saveProgress(progress);
+  renderStats();
+}
+
+function shortTheme(t){
+  return t.replace(/^[壹貳參肆伍陸柒捌玖拾]+、/, '');
+}
+
+function filteredItems(){
+  return QUIZ_DATA.filter(it =>
+    state.themes.has(it.theme) &&
+    state.qtypes.has(it.qtype) &&
+    (!state.weakOnly || statusOf(it.id) === 'weak') &&
+    (!state.search || (it.question + it.answer.map(a=>a.text).join('')).includes(state.search))
+  );
+}
+
+function buildSidebar(){
+  const orderChips = document.getElementById('orderModeChips');
+  orderChips.innerHTML = '';
+  [['filter','依篩選出題'], ['custom','自選題目測驗']].forEach(([key,label]) => {
+    const c = document.createElement('button');
+    c.className = 'chip' + (state.orderMode === key ? ' active' : '');
+    c.textContent = label;
+    c.onclick = () => {
+      if(state.orderMode === key) return;
+      state.orderMode = key;
+      if(key === 'custom'){ state.customLocked = false; }
+      refreshAll();
+    };
+    orderChips.appendChild(c);
+  });
+
+  const themeList = document.getElementById('themeList');
+  themeList.innerHTML = '';
+  const counts = {};
+  QUIZ_DATA.forEach(it => counts[it.theme] = (counts[it.theme]||0)+1);
+
+  const allTab = document.createElement('li');
+  allTab.className = 'folder-tab' + (state.themes.size === THEMES.length ? ' active' : '');
+  allTab.innerHTML = '<span>全部主題</span><span class="cnt">'+QUIZ_DATA.length+'</span>';
+  allTab.onclick = () => { state.themes = new Set(THEMES); refreshAll(); };
+  themeList.appendChild(allTab);
+
+  THEMES.forEach(t => {
+    const li = document.createElement('li');
+    const active = state.themes.size !== THEMES.length && state.themes.has(t);
+    li.className = 'folder-tab' + (active ? ' active' : '');
+    li.innerHTML = '<span>'+shortTheme(t)+'</span><span class="cnt">'+counts[t]+'</span>';
+    li.onclick = () => {
+      if(state.themes.size === THEMES.length){ state.themes = new Set([t]); }
+      else if(state.themes.has(t) && state.themes.size === 1){ state.themes = new Set(THEMES); }
+      else { state.themes = new Set([t]); }
+      refreshAll();
+    };
+    themeList.appendChild(li);
+  });
+
+  const chipRow = document.getElementById('qtypeChips');
+  chipRow.innerHTML = '';
+  ['問答題','申論題'].forEach(qt => {
+    const c = document.createElement('button');
+    c.className = 'chip' + (state.qtypes.has(qt) ? ' active' : '');
+    c.textContent = qt;
+    c.onclick = () => {
+      if(state.qtypes.has(qt)){
+        if(state.qtypes.size > 1) state.qtypes.delete(qt);
+      } else { state.qtypes.add(qt); }
+      refreshAll();
+    };
+    chipRow.appendChild(c);
+  });
+
+  updateSearchVisibility();
+}
+
+function updateSearchVisibility(){
+  const show = state.mode === 'browse' || (state.mode === 'quiz' && state.orderMode === 'custom' && !state.customLocked);
+  document.getElementById('searchWrap').style.display = show ? 'block' : 'none';
+}
+
+function renderStats(){
+  document.getElementById('statTotal').textContent = QUIZ_DATA.length;
+  document.getElementById('statKnown').textContent = QUIZ_DATA.filter(it=>statusOf(it.id)==='known').length;
+  document.getElementById('statWeak').textContent = QUIZ_DATA.filter(it=>statusOf(it.id)==='weak').length;
+}
+
+function shuffleArr(a){
+  const arr = a.slice();
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function rebuildOrder(){
+  let items = filteredItems();
+  if(state.shuffle) items = shuffleArr(items);
+  state.order = items.map(it => it.id);
+  state.pos = 0;
+  state.revealed = false;
+  userAnswers = {};
+}
+
+function lockCustomQuiz(){
+  if(state.customSelected.size === 0) return;
+  let ids = Array.from(state.customSelected);
+  if(state.shuffle) ids = shuffleArr(ids);
+  state.order = ids;
+  state.pos = 0;
+  state.revealed = false;
+  userAnswers = {};
+  state.customLocked = true;
+}
+
+function renderAnswerList(answer){
+  return '<ul class="answer-list">' + answer.map(a =>
+    '<li data-lv="'+a.level+'">'+escapeHtml(a.text)+'</li>'
+  ).join('') + '</ul>';
+}
+
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+const DIFF_MAX_LEN = 4000;
+let diffTimer = null;
+
+function lcsDiff(a, b){
+  const n = a.length, m = b.length;
+  const dp = new Int16Array((n+1)*(m+1));
+  const idx = (i,j) => i*(m+1)+j;
+  for(let i=n-1;i>=0;i--){
+    for(let j=m-1;j>=0;j--){
+      dp[idx(i,j)] = a[i]===b[j] ? dp[idx(i+1,j+1)]+1 : Math.max(dp[idx(i+1,j)], dp[idx(i,j+1)]);
+    }
+  }
+  let i=0,j=0;
+  const aOps=[], bOps=[];
+  while(i<n && j<m){
+    if(a[i]===b[j]){ aOps.push({t:'equal',c:a[i]}); bOps.push({t:'equal',c:b[j]}); i++; j++; }
+    else if(dp[idx(i+1,j)] >= dp[idx(i,j+1)]){ aOps.push({t:'insert',c:a[i]}); i++; }
+    else { bOps.push({t:'delete',c:b[j]}); j++; }
+  }
+  while(i<n){ aOps.push({t:'insert',c:a[i]}); i++; }
+  while(j<m){ bOps.push({t:'delete',c:b[j]}); j++; }
+  return {aOps, bOps};
+}
+
+function groupOps(ops){
+  const out=[];
+  for(const op of ops){
+    if(out.length && out[out.length-1].t===op.t){ out[out.length-1].text += op.c; }
+    else out.push({t:op.t, text:op.c});
+  }
+  return out;
+}
+
+function renderDiffRuns(runs, badType){
+  return runs.map(r => r.t===badType ? '<mark class="diff-bad">'+escapeHtml(r.text)+'</mark>' : escapeHtml(r.text)).join('');
+}
+
+function stdConcatText(answer){
+  return answer.map(a => a.text).join('\n');
+}
+
+function renderStdListDiff(answer, userText){
+  if(userText.trim()==='' || userText.length > DIFF_MAX_LEN || stdConcatText(answer).length > DIFF_MAX_LEN){
+    return answer.map(a => '<li data-lv="'+a.level+'">'+escapeHtml(a.text)+'</li>').join('');
+  }
+  const std = stdConcatText(answer);
+  const {bOps} = lcsDiff(userText, std);
+  let ptr = 0;
+  return answer.map((a,i) => {
+    const len = a.text.length;
+    const lineOps = bOps.slice(ptr, ptr+len);
+    ptr += len;
+    if(i < answer.length-1) ptr += 1; // skip the '\n' separator op
+    const runs = groupOps(lineOps);
+    return '<li data-lv="'+a.level+'">'+renderDiffRuns(runs,'delete')+'</li>';
+  }).join('');
+}
+
+function renderUserDiffHtml(answer, userText){
+  if(userText.trim()===''){
+    return '<div class="user-answer-text empty">（這題你還沒有寫下答案）</div>';
+  }
+  const std = stdConcatText(answer);
+  if(userText.length > DIFF_MAX_LEN || std.length > DIFF_MAX_LEN){
+    return '<div class="user-answer-text">'+escapeHtml(userText)+'</div>';
+  }
+  const {aOps} = lcsDiff(userText, std);
+  const runs = groupOps(aOps);
+  return '<div class="user-answer-text">'+renderDiffRuns(runs,'insert')+'</div>';
+}
+
+function renderQuizPanel(){
+  const panel = document.getElementById('panel');
+  const total = state.order.length;
+
+  if(total === 0){
+    panel.innerHTML = '<div class="empty">目前篩選條件下沒有符合的題目，換個主題或關閉「只看需加強」試試。</div>';
+    return;
+  }
+  if(state.pos >= total) state.pos = 0;
+
+  const id = state.order[state.pos];
+  const it = QUIZ_DATA.find(x => x.id === id);
+  const st = statusOf(id);
+
+  let html = '';
+  if(state.orderMode === 'custom'){
+    html += '<div class="custom-banner">📋 自選題目測驗（共 '+total+' 題）<button class="edit-again-btn" id="editSelectionBtn">重新挑選題目</button></div>';
+  }
+  html += '<div class="progress-wrap"><span>'+(state.pos+1)+' / '+total+'</span>';
+  html += '<div class="progress-track"><div class="progress-fill" style="width:'+((state.pos)/Math.max(total-1,1)*100)+'%"></div></div></div>';
+
+  html += '<div class="card">';
+  html += '<div class="card-meta">';
+  html += '<span class="tag theme">'+shortTheme(it.theme)+'</span>';
+  html += '<span class="tag qtype">'+it.qtype+'</span>';
+  if(it.marker){ html += '<span class="seal">'+it.marker+'</span>'; }
+  html += '<span class="qnum">題號 #'+(parseInt(id)+1)+'</span>';
+  html += '</div>';
+
+  html += '<div class="question-text">'+escapeHtml(it.question)+'</div>';
+
+  const draft = userAnswers[id] || '';
+
+  html += '<div class="write-area"><textarea id="userAnswerInput" placeholder="先在這裡打出你自己的答案，寫完後按下方按鈕對照題庫標準答案…">'+escapeHtml(draft)+'</textarea></div>';
+  html += '<div class="write-hint">作答內容只會暫存在目前這一題，切換到下一題就會自動清空。</div>';
+
+  if(!state.revealed){
+    html += '<button class="reveal-btn" id="compareBtn">對照標準答案</button>';
+  } else {
+    html += '<div class="diff-legend">差異標記：<mark class="diff-bad">紅字粗體</mark> 表示你的作答與標準答案不同或遺漏的部分，會隨你修改內容即時更新</div>';
+    html += '<div class="compare-grid">';
+    html += '<div class="compare-col"><div class="answer-label">你的作答<button class="edit-again-btn" id="hideCompareBtn">隱藏比對</button></div>';
+    html += '<div id="userDiffView">'+renderUserDiffHtml(it.answer, draft)+'</div>';
+    html += '</div>';
+    html += '<div class="compare-col"><div class="answer-label">題庫標準答案</div><ul class="answer-list" id="stdDiffView">'+renderStdListDiff(it.answer, draft)+'</ul></div>';
+    html += '</div>';
+    html += '<div class="action-row">';
+    html += '<button class="act-btn weak'+(st==='weak'?' selected':'')+'" id="btnWeak">⚑ 需加強</button>';
+    html += '<button class="act-btn known'+(st==='known'?' selected':'')+'" id="btnKnown">✓ 已熟悉</button>';
+    html += '<button class="act-btn next" id="btnNext">下一題 →</button>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  panel.innerHTML = html;
+
+  const ta = document.getElementById('userAnswerInput');
+  if(ta){
+    ta.addEventListener('input', (e) => {
+      userAnswers[id] = e.target.value;
+      if(state.revealed){
+        clearTimeout(diffTimer);
+        diffTimer = setTimeout(() => updateQuizDiff(id, it), 200);
+      }
+    });
+  }
+  const cb = document.getElementById('compareBtn');
+  if(cb) cb.onclick = () => {
+    const el = document.getElementById('userAnswerInput');
+    userAnswers[id] = el ? el.value : (userAnswers[id]||'');
+    state.revealed = true;
+    renderQuizPanel();
+  };
+  const hc = document.getElementById('hideCompareBtn');
+  if(hc) hc.onclick = () => { state.revealed = false; renderQuizPanel(); };
+  const bw = document.getElementById('btnWeak');
+  if(bw) bw.onclick = () => { setStatus(id,'weak'); renderQuizPanel(); };
+  const bk = document.getElementById('btnKnown');
+  if(bk) bk.onclick = () => { setStatus(id,'known'); renderQuizPanel(); };
+  const bn = document.getElementById('btnNext');
+  if(bn) bn.onclick = () => {
+    delete userAnswers[id];
+    state.pos = (state.pos + 1) % total;
+    state.revealed = false;
+    renderQuizPanel();
+  };
+  const es = document.getElementById('editSelectionBtn');
+  if(es) es.onclick = () => {
+    state.customLocked = false;
+    renderPickerPanel();
+  };
+}
+
+function renderPickerPanel(){
+  const panel = document.getElementById('panel');
+  const candidates = filteredItems();
+  const selCount = state.customSelected.size;
+
+  let html = '';
+  html += '<div class="picker-toolbar">';
+  html += '<div class="picker-count">已選 <strong>'+selCount+'</strong> 題</div>';
+  html += '<div class="picker-actions">';
+  html += '<button class="chip" id="pickAllBtn">全選目前顯示('+candidates.length+')</button>';
+  html += '<button class="chip" id="pickWeakBtn">加入所有需加強</button>';
+  html += '<button class="chip" id="pickClearBtn">清空已選</button>';
+  html += '</div></div>';
+
+  if(candidates.length === 0){
+    html += '<div class="empty">目前篩選條件下沒有符合的題目可供選擇，換個主題或關閉「只看需加強」試試。</div>';
+  } else {
+    html += '<div class="picker-list">';
+    candidates.forEach(it => {
+      const checked = state.customSelected.has(it.id);
+      html += '<label class="picker-item'+(checked?' checked':'')+'">';
+      html += '<input type="checkbox" data-id="'+it.id+'" '+(checked?'checked':'')+'>';
+      html += '<span class="picker-item-body">';
+      html += '<span class="card-meta" style="margin-bottom:0;">';
+      html += '<span class="tag theme">'+shortTheme(it.theme)+'</span>';
+      html += '<span class="tag qtype">'+it.qtype+'</span>';
+      if(it.marker){ html += '<span class="seal" style="font-size:12px;">'+it.marker+'</span>'; }
+      html += '<span class="qnum">#'+(parseInt(it.id)+1)+'</span>';
+      html += '</span>';
+      html += '<span class="picker-item-q">'+escapeHtml(it.question)+'</span>';
+      html += '</span>';
+      html += '</label>';
+    });
+    html += '</div>';
+  }
+
+  html += '<div class="picker-footer">';
+  html += '<button class="act-btn next" id="startCustomBtn" '+(selCount===0?'disabled':'')+'>開始測驗（已選 '+selCount+' 題）→</button>';
+  html += '</div>';
+
+  panel.innerHTML = html;
+
+  panel.querySelectorAll('.picker-item input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const id = e.target.dataset.id;
+      if(e.target.checked) state.customSelected.add(id); else state.customSelected.delete(id);
+      e.target.closest('.picker-item').classList.toggle('checked', e.target.checked);
+      const cnt = state.customSelected.size;
+      const countStrong = panel.querySelector('.picker-count strong');
+      if(countStrong) countStrong.textContent = cnt;
+      const startBtn = document.getElementById('startCustomBtn');
+      if(startBtn){
+        startBtn.disabled = cnt === 0;
+        startBtn.textContent = '開始測驗（已選 '+cnt+' 題）→';
+      }
+    });
+  });
+
+  const pickAllBtn = document.getElementById('pickAllBtn');
+  if(pickAllBtn) pickAllBtn.onclick = () => {
+    candidates.forEach(it => state.customSelected.add(it.id));
+    renderPickerPanel();
+  };
+  const pickWeakBtn = document.getElementById('pickWeakBtn');
+  if(pickWeakBtn) pickWeakBtn.onclick = () => {
+    candidates.filter(it => statusOf(it.id) === 'weak').forEach(it => state.customSelected.add(it.id));
+    renderPickerPanel();
+  };
+  const pickClearBtn = document.getElementById('pickClearBtn');
+  if(pickClearBtn) pickClearBtn.onclick = () => {
+    state.customSelected.clear();
+    renderPickerPanel();
+  };
+  const startBtn = document.getElementById('startCustomBtn');
+  if(startBtn) startBtn.onclick = () => {
+    if(state.customSelected.size === 0) return;
+    lockCustomQuiz();
+    renderQuizPanel();
+  };
+}
+
+function updateQuizDiff(id, it){
+  const userText = userAnswers[id] || '';
+  const userEl = document.getElementById('userDiffView');
+  const stdEl = document.getElementById('stdDiffView');
+  if(userEl) userEl.innerHTML = renderUserDiffHtml(it.answer, userText);
+  if(stdEl) stdEl.innerHTML = renderStdListDiff(it.answer, userText);
+}
+
+function renderBrowsePanel(){
+  const panel = document.getElementById('panel');
+  const items = filteredItems();
+  if(items.length === 0){
+    panel.innerHTML = '<div class="empty">找不到符合的題目，換個關鍵字或篩選條件試試。</div>';
+    return;
+  }
+  panel.innerHTML = items.map(it => {
+    const st = statusOf(it.id);
+    return '<div class="browse-item" data-id="'+it.id+'">'
+      + '<div class="card-meta">'
+      + '<span class="status-dot '+st+'"></span>'
+      + '<span class="tag theme">'+shortTheme(it.theme)+'</span>'
+      + '<span class="tag qtype">'+it.qtype+'</span>'
+      + (it.marker ? '<span class="seal">'+it.marker+'</span>' : '')
+      + '<span class="qnum">#'+(parseInt(it.id)+1)+'</span>'
+      + '</div>'
+      + '<div class="question-text">'+escapeHtml(it.question)+'</div>'
+      + '<div class="browse-hint">點擊展開／收合答案</div>'
+      + '<div class="answer-block"><div class="answer-label">標準答案</div>'+renderAnswerList(it.answer)+'</div>'
+      + '</div>';
+  }).join('');
+
+  panel.querySelectorAll('.browse-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      el.classList.toggle('open');
+    });
+  });
+}
+
+function refreshAll(){
+  buildSidebar();
+  if(state.mode === 'quiz'){
+    if(state.orderMode === 'custom'){
+      if(state.customLocked){ renderQuizPanel(); }
+      else { renderPickerPanel(); }
+    } else {
+      rebuildOrder();
+      renderQuizPanel();
+    }
+  } else {
+    renderBrowsePanel();
+  }
+  renderStats();
+}
+
+document.getElementById('btnQuizMode').onclick = () => {
+  state.mode = 'quiz';
+  document.getElementById('btnQuizMode').classList.add('active');
+  document.getElementById('btnBrowseMode').classList.remove('active');
+  refreshAll();
+};
+document.getElementById('btnBrowseMode').onclick = () => {
+  state.mode = 'browse';
+  document.getElementById('btnBrowseMode').classList.add('active');
+  document.getElementById('btnQuizMode').classList.remove('active');
+  refreshAll();
+};
+
+document.getElementById('toggleShuffle').onclick = (e) => {
+  state.shuffle = !state.shuffle;
+  e.currentTarget.classList.toggle('on', state.shuffle);
+  if(state.mode !== 'quiz') return;
+  if(state.orderMode === 'custom'){
+    if(state.customLocked){
+      let ids = state.order.slice();
+      if(state.shuffle) ids = shuffleArr(ids);
+      state.order = ids;
+      state.pos = 0;
+      state.revealed = false;
+      userAnswers = {};
+      renderQuizPanel();
+    }
+  } else {
+    rebuildOrder();
+    renderQuizPanel();
+  }
+};
+document.getElementById('toggleWeakOnly').onclick = (e) => {
+  state.weakOnly = !state.weakOnly;
+  e.currentTarget.classList.toggle('on', state.weakOnly);
+  refreshAll();
+};
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  state.search = e.target.value.trim();
+  if(state.mode === 'browse'){ renderBrowsePanel(); }
+  else if(state.orderMode === 'custom' && !state.customLocked){ renderPickerPanel(); }
+});
+document.getElementById('resetBtn').onclick = () => {
+  if(confirm('確定要清除所有「熟悉／需加強」標記進度嗎？此動作無法復原。')){
+    progress = {};
+    userAnswers = {};
+    saveProgress(progress);
+    state.revealed = false;
+    refreshAll();
+  }
+};
+
+refreshAll();
+</script>
+</body>
+</html>
