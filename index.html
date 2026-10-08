@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>英文文法測驗</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#222;--sub:#667;--pri:#3b6fd4;--ok:#2e9d5b;--no:#d6453d;--bd:#dde1e8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#15171b;--card:#20242b;--tx:#e8eaee;--sub:#9aa1ad;--pri:#6c97ee;--ok:#4cc27f;--no:#f06b62;--bd:#333943}}
+*{box-sizing:inherit}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+#app{max-width:720px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin-bottom:14px}
+h1{font-size:22px;margin:4px 0 14px}h2{font-size:18px;margin:0 0 10px}
+label.c{display:block;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;margin:8px 0;cursor:pointer}
+button{font:inherit;border:0;border-radius:10px;padding:12px 18px;background:var(--pri);color:#fff;cursor:pointer;min-height:44px}
+button.g{background:transparent;color:var(--pri);border:1px solid var(--pri)}button:disabled{opacity:.4}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:2px solid var(--bd);margin:8px 0;padding:12px 14px}
+.opt.sel{border-color:var(--pri)}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}.opt.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 15%,var(--card))}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;background:var(--pri)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.row>*{flex:1}
+.sub{color:var(--sub);font-size:14px}.q{font-size:18px;margin:6px 0 10px}.exp{border-left:4px solid var(--pri);padding:6px 12px;margin-top:12px;font-size:15px}
+.big{font-size:40px;font-weight:700;color:var(--pri)}details{border-top:1px solid var(--bd);padding:8px 0}summary{cursor:pointer}
+</style><script type="text/javascript" nonce="a09f816426344cb18d5d30a5334" src="//local.adguard.org?ts=1791417799828&amp;type=content-script&amp;dmn=dc561667-fd32-4153-a9fe-7e3b362a8058.frame.claudeusercontent.com&amp;url=https%3A%2F%2Fdc561667-fd32-4153-a9fe-7e3b362a8058.frame.claudeusercontent.com%2F_f%2F1791418057-faa0%2F_src%2Findex.html%3F__frame_t%3DOs_nnVbjBhhTHw0MNxxT1g-B.d14f7c7a-38b5-44a7-b887-3061971a250b.6b848d31-ba36-4333-bf71-e3dd86458ba0.1791421658&amp;app=msedge.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-loc&amp;st-dnt"></script><script type="text/javascript" nonce="a09f816426344cb18d5d30a5334" src="//local.adguard.org?ts=1791417799828&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head><body><div id="app"></div>
+<script>
+/* ===== 題庫（之後只要增加/替換這裡的題目即可）=====
+ c章, t章名, id題號, q題幹, o選項A-D, a答案, tr翻譯, g文法重點, e說明, n疑點(選填) */
+const CH1="八大詞類、五大基本句型與三大子句";
+const QUESTIONS=[
+{c:1,t:CH1,id:"1-01",q:"Lisa is a very ______ girl.",o:["beautify","beautifully","beautiful","beauty"],a:"C",tr:"莉莎是個很漂亮的女孩。",g:"形容詞修飾名詞",e:"名詞 girl 前需用形容詞修飾，beautiful 為形容詞。beautify 是動詞、beautifully 是副詞、beauty 是名詞，皆不能放在此處修飾名詞。"},
+{c:1,t:CH1,id:"1-02",q:"I am not the tallest in my family. My _______ very tall.",o:["families are all","family is all","all family are","family are all"],a:"D",tr:"我不是家裡面最高的，我的家人都很高。",g:"集合名詞視為複數",e:"此處 family 指「家人們」，視為複數用 are；all 放在 be 動詞後。A 的 families 不合語意；B 動詞 is 為單數；C 的 all 位置錯誤。"},
+{c:1,t:CH1,id:"1-03",q:"Please make the most of your time. Wasting ______ is wasting life.",o:["time","the time","a time","that time"],a:"A",tr:"請善用你的時間，浪費時間就是浪費生命。",g:"不可數名詞（抽象名詞）",e:"泛指「時間」這個概念時，time 為不可數名詞，不加冠詞。B、D 為特定時間，C 的 a time 不符泛指的語意。"},
+{c:1,t:CH1,id:"1-04",q:"Alice: How is your cousin, Joseph?  Betty: ______ is fine. Thank you.",o:["Joseph","He","She","My cousin"],a:"B",tr:"艾莉絲：你的表弟約瑟夫好嗎？ 貝蒂：他很好，謝謝妳。",g:"代名詞代替已出現的名詞",e:"名詞第二次提到時要改用代名詞，Joseph 是男性，故用 He。A、D 重複使用名詞；C 的 She 性別不符。"},
+{c:1,t:CH1,id:"1-05",q:"The food of the restaurant tastes ______.",o:["good","wonderfully","well","terribly"],a:"A",tr:"這家餐廳的餐點嚐起來很棒。",g:"連綴動詞 + 形容詞（句型二）",e:"taste 為連綴動詞，後接形容詞作主詞補語，good 符合語意。B、C 為副詞，不能作補語；D 雖為副詞且語意不通。"},
+{c:1,t:CH1,id:"1-06",q:"I like to ______ music in my free time.",o:["listen","hear","listen to","hear of"],a:"C",tr:"我喜歡在空閒時聽音樂。",g:"不及物動詞 + 介系詞",e:"listen 是不及物動詞，接受詞需加 to，故 listen to music。A 缺介系詞；B hear 雖是及物但強調「聽見」而非主動聽；D hear of 是「聽說」。"},
+{c:1,t:CH1,id:"1-07",q:"______ I didn’t pass the test, my mom doesn’t let me go out.",o:["Although","Until","If","Because"],a:"D",tr:"因為我考試不及格，所以我媽媽不讓我出門。",g:"副詞子句：表原因",e:"前後句為因果關係，用 Because 引導原因子句。A 表讓步、B 表「直到」、C 表條件，語意皆不通。"},
+{c:1,t:CH1,id:"1-08",q:"The old lady ______ is standing over there is my grandmother.",o:["whom","which","whose","who"],a:"D",tr:"站在那裡的老婦人是我的祖母。",g:"關係代名詞主格",e:"先行詞 lady 是人，且在子句中作主詞（後接動詞 is standing），用主格 who。whom 為受格、which 用於事物、whose 為所有格。"},
+{c:1,t:CH1,id:"1-09",q:"The fact ______ you made the mistake is true.",o:["how","that","where","when"],a:"B",tr:"你犯了錯的這件事實是真的。",g:"名詞子句作同位語",e:"fact 後的 that 子句是完整子句，作 fact 的同位語，用 that。how、where、when 為疑問副詞，語意不合。"},
+{c:1,t:CH1,id:"1-10",q:"These books belong to you, while ______ are mine.",o:["this","that","those","which"],a:"C",tr:"這些書屬於你的，而那些是我的。",g:"指示代名詞單複數一致",e:"These books 為複數，對比的代名詞用複數 those，動詞 are 也相符。this、that 為單數，which 為疑問/關係詞。"},
+{c:1,t:CH1,id:"1-11",q:"Laura is the girl ______ I have worked for three years. She is my best friend among my colleagues.",o:["who","whom","for whom","with whom"],a:"D",tr:"蘿拉是我共事三年的女孩，她是我同事裡最要好的朋友。",g:"介系詞 + 關係代名詞",e:"work with 為「與…共事」，故用 with whom。work for 是「為…工作」，語意為上下屬，與 colleagues 不符。A、B 缺少介系詞 with。"},
+{c:1,t:CH1,id:"1-12",q:"People ______ English is very good can find jobs more easily.",o:["who","whose","that","of which"],a:"B",tr:"英文很好的人可以更容易找到工作。",g:"關係代名詞所有格",e:"空格後 English is very good 為完整子句，表示「他們的英文」，用所有格 whose。who、that 為主格，of which 用於事物。"},
+{c:1,t:CH1,id:"1-13",q:"Ruth was so shocked to hear that bad news. She didn't know _______ to do to help her friend.",o:["that","what","when","how"],a:"B",tr:"露絲聽到那壞消息很驚訝。她不知道怎麼做才能幫助她的朋友。",g:"疑問詞 + to V 作受詞",e:"do 為及物動詞，缺少受詞，故用 what to do（該做什麼）。how to do 不合 to do 後缺受詞的結構；that 不與不定詞連用；when 語意不通。"},
+{c:1,t:CH1,id:"1-14",q:"They will arrive here on Friday, ______ my brother is leaving for New York.",o:["where","which","when","how"],a:"C",tr:"他們會在星期五抵達這裡，那時我哥哥正前往紐約。",g:"關係副詞 when（先行詞為時間）",e:"先行詞 Friday 是時間，用關係副詞 when 補充說明（= and then）。where 指地點、which 後缺名詞角色、how 指方法。"},
+{c:1,t:CH1,id:"1-15",q:"You'd better explain the reason ______ you are late for work again to the manager yourself.",o:["where","why","when","how"],a:"B",tr:"你最好自己跟經理解釋為什麼你上班又遲到。",g:"關係副詞 why（先行詞 reason）",e:"先行詞為 the reason，關係副詞用 why。where 指地點、when 指時間、how 指方法，皆不符。"},
+{c:1,t:CH1,id:"1-16",q:"______ you go to John’s party tomorrow, I will go with you.",o:["Although","How","If","So"],a:"C",tr:"如果你明天去約翰的派對，我就會跟你去。",g:"副詞子句：表條件",e:"前句為條件、後句為結果，用 If，並以現在式代替未來式。Although 表讓步、How 為疑問詞、So 為「所以」，語意不通。"},
+{c:1,t:CH1,id:"1-17",q:"My father gave ______.",o:["me to a gift","a gift me","me a gift","a gift of me"],a:"C",tr:"我爸爸給我一個禮物。",g:"句型五：授與動詞（S+V+IO+DO）",e:"give 為授與動詞，順序為「間接受詞（人）+ 直接受詞（物）」，即 me a gift。若先物後人需加 to（a gift to me），A、B、D 均不正確。"},
+{c:1,t:CH1,id:"1-18",q:"Tracy was reading a novel when we ______ her.",o:["saw","looked","thought","laughed"],a:"A",tr:"當我們看到崔西的時候，她正在看小說。",g:"及物動詞需接受詞",e:"空格後直接接受詞 her，需用及物動詞 saw。looked（需 look at）、thought（需 thought of）、laughed（需 laughed at）皆為不及物，缺介系詞。"},
+{c:1,t:CH1,id:"1-19",q:"He ______ me that you had won the lottery.",o:["talked","said","spoke","told"],a:"D",tr:"他告訴我你中了樂透。",g:"授與動詞 tell + 人 + that 子句",e:"tell 可接「人 + that 子句」，故 told me that...。said 不直接接人作受詞（需 said to me）；talked、spoke 為不及物動詞。"},
+{c:1,t:CH1,id:"1-20",q:"Applicant: When can I know the result?  Office: We'll ______ as soon as possible.",o:["inform you of the news","inform you the news","inform the news of you","inform the news to you"],a:"A",tr:"應徵者：我什麼時候可以知道結果? 雇方：我們會盡快通知你消息。",g:"inform + 人 + of + 事",e:"inform 的固定用法為 inform sb. of sth.，故 inform you of the news。B 缺 of；C、D 的人與事順序及介系詞皆錯。"}
+];
+/* 第二章 */
+QUESTIONS.push(...[
+{id:"2-01",q:"My brother is a history teacher. He ______ at a senior high school.",o:["taught","has taught","will teach","teaches"],a:"D",tr:"我哥哥是歷史老師，他在高中教書。",g:"現在簡單式：現在的狀態",e:"描述目前的職業與狀態用現在簡單式，主詞 He 為第三人稱單數加 es。其餘過去、完成、未來時態皆與「目前任職」語意不符。"},
+{id:"2-02",q:"Dad: Where is Mom, Ken?  Ken: She ______ in the kitchen.",o:["cooks","is cooking","has cooked","will cook"],a:"B",tr:"爸爸：肯，媽媽在哪裡? 肯：她在廚房煮飯。",g:"現在進行式",e:"回答「現在在哪裡、做什麼」，用現在進行式 is cooking。cooks 表習慣，has cooked 表已完成，will cook 表未來。"},
+{id:"2-03",q:"My uncle and his family ______ to the United States in 1978.",o:["was going to move","moved","would move","had moved"],a:"B",tr:"我叔叔和他家人在 1978 年時搬到美國。",g:"過去簡單式",e:"in 1978 為明確過去時間，用過去簡單式 moved。A 主詞複數不能用 was；D 過去完成式需有另一個更晚的過去動作。"},
+{id:"2-04",q:"When the telephone rang, I ______ a bath. Mom answered the phone and took a message for me.",o:["took","was taking","would take","had taken"],a:"B",tr:"當電話響的時候，我正在洗澡。媽媽接聽電話並為我傳口信。",g:"過去進行式 + 過去簡單式",e:"過去簡單式動作（rang）發生時，另一動作正在進行，用過去進行式 was taking。"},
+{id:"2-05",q:"I don't know why I still can't speak English well. I ______ English for more than three years.",o:["study","am studying","studied","have studied"],a:"D",tr:"我不知道為什麼我英語還說得不好，我已經學超過三年了。",g:"現在完成式：動作累積",e:"for more than three years 表從過去持續到現在的一段時間，用 have studied。"},
+{id:"2-06",q:"By the end of this month, I ______ twenty books in a year.",o:["will be reading","will have finished reading","will have finished to read","will be finished reading"],a:"B",tr:"在這個月底前，我將在一年內看完二十本書。",g:"未來完成式：By + 未來時間",e:"By the end of this month 搭配未來完成式 will have + p.p.。finish 後接動名詞，不接 to V，故 C 錯。"},
+{id:"2-07",q:"How many countries ______?",o:["did you ever go","had you ever gone","have you gone to","have you ever been to"],a:"D",tr:"你曾經去過多少個國家?",g:"現在完成式：經驗（have been to）",e:"問「去過」的經驗用 have been to；have gone to 表「去了還沒回來」。A、B 的 ever 與時態搭配不當。"},
+{id:"2-08",q:"She ______ some last-minute shopping before she went to the airport.",o:["have done","would do","had done","could have been doing"],a:"C",tr:"在去飛機場之前，她做了行前最後一分鐘的採購。",g:"過去完成式：比過去更早",e:"採購發生在 went to the airport 之前，用過去完成式 had done。A 主詞單數不能用 have。"},
+{id:"2-09",q:"I ______ that he ______ come.",o:["didn't know; could","don't know; should","didn't expect; would","didn't think; might"],a:"C",tr:"我沒有料到他會來。",g:"過去未來：時態一致",e:"主要子句為過去式 didn't expect，從屬子句用 would 表「過去的未來」。其餘選項語意或時態不通。"},
+{id:"2-10",q:"Peggy: Do you have any message from Martha?  Tracy: No. I ______ anything from her since she left.",o:["don't know","haven't been knowing","haven't heard","haven't been hearing"],a:"C",tr:"佩吉：妳有瑪莎的消息嗎? 崔西：沒有，自從她離開後，我都沒收到她的音訊。",g:"現在完成式 + since",e:"since she left 搭配現在完成式 haven't heard。hear、know 為狀態動詞，不用進行式。"},
+{id:"2-11",q:"I ______ the money to you as soon as I get my salary.",o:["am returning","would return","will be returning","will return"],a:"D",tr:"我一領到薪水，就會把錢還給你。",g:"未來簡單式 + 時間副詞子句",e:"時間子句用現在式（get）代替未來，主要子句用 will return 表未來承諾。"},
+{id:"2-12",q:"Zoe ______ her grandmother once a week. She loves her grandma very much.",o:["will visit","visits","is visiting","visited"],a:"B",tr:"柔依一星期拜訪她祖母一次，她非常喜愛她的祖母。",g:"現在簡單式：習慣",e:"once a week 表習慣，用現在簡單式，第三人稱單數加 s。"},
+{id:"2-13",q:"I don't have much time now for traveling around the world. However, I ______ by the year 2015. Can you wait until then?",o:["will be having retired","will be retired","am going to retire","will have retired"],a:"D",tr:"我現在沒有很多時間可以環遊世界。不過我到 2015 年會退休，你可以等到那時嗎?",g:"未來完成式：By + 未來時間",e:"by the year 2015 表在該時間點前已完成，用 will have retired。"},
+{id:"2-14",q:"I usually ______ my teeth before I go to bed.",o:["brush","am brushing","brushed","will brush"],a:"A",tr:"我通常睡覺前會刷牙。",g:"現在簡單式：習慣",e:"usually 表習慣，主詞 I 用原形 brush。"},
+{id:"2-15",q:"As soon as Rita finished talking on the phone, she ______ the room.",o:["left","would leave","was leaving","had left"],a:"A",tr:"麗塔一講完電話，就離開房間了。",g:"過去簡單式：連續動作",e:"as soon as 連接兩個依序發生的過去動作，皆用過去簡單式 left。"},
+{id:"2-16",q:"Marvin didn't expect that Sharon would be so angry. He regretted that he ______ such rude words to her.",o:["says","has said","said","had said"],a:"D",tr:"馬文沒料到莎朗會這麼生氣。他後悔對她說了粗魯的話。",g:"過去完成式",e:"後悔（過去）的事發生在更早，用過去完成式 had said。"},
+{id:"2-17",q:"I ______ TV when he came home.",o:["have watched","am watching","watched","was watching"],a:"D",tr:"當他回到家時，我正在看電視。",g:"過去進行式",e:"過去動作（came）發生時另一動作正在進行，用 was watching。"},
+{id:"2-18",q:"I ______ at this time tomorrow morning.",o:["will jog","jog","will jogging","will be jogging"],a:"D",tr:"明天早上的此時我將會正在慢跑。",g:"未來進行式",e:"at this time tomorrow 表未來某時間點正在進行，用 will be + V-ing。"},
+{id:"2-19",q:"When I arrived at the airport, the plane ______.",o:["has taken off","took off","had taken off","had been taken off"],a:"C",tr:"當我到機場的時候，飛機已經起飛了。",g:"過去完成式",e:"起飛比抵達更早，用 had taken off。take off 是不及物動詞，無被動，故 D 錯。"},
+{id:"2-20",q:"By next June, we ______ the project.",o:["will finish","will have finished","will be finishing","will be finished"],a:"B",tr:"到明年六月時，我們將已完成計畫。",g:"未來完成式",e:"By next June 搭配 will have finished 表未來某時前已完成。"}
+].map(x=>({c:2,t:"動詞時態",...x})));
+/* 第三章 */
+QUESTIONS.push(...[
+{id:"3-01",q:"______ careful! The chair ______.",o:["Please; is breaking","Be; is broken","Be; has broken","Be; has been breaking"],a:"B",tr:"請小心！這椅子壞了。",g:"祈使句 + 被動語態表狀態",e:"祈使句 careful 前需 Be（Please be 才成立，故 A 錯）。椅子「是壞掉的」用被動 is broken 表狀態。C、D 時態與語意不符。"},
+{id:"3-02",q:"Everybody believes his words. Therefore, he ______ to be honest.",o:["believes","has believed","is believing","is believed"],a:"D",tr:"大家相信他說的話。因此，他被認為是誠實的。",g:"被動語態 + 不定詞",e:"主詞 he 是「被相信」的對象，用被動 is believed to be。其餘為主動，語意不通。"},
+{id:"3-03",q:"The workers have worked on that house for two years. When will the house ______ anyway?",o:["finish","be finished","be finishing","have finishing"],a:"B",tr:"工人已經做了兩年了，這房子何時將會完成?",g:"未來簡單式被動",e:"house 是被完成的對象，用 will be finished。finish 接受詞時才用主動，C、D 結構錯誤。"},
+{id:"3-04",q:"Sophia is a famous writer. There are at least ten books which ______ by her up to this year.",o:["have written","are writing","have been writing","have been written"],a:"D",tr:"蘇菲亞是個有名的作家。直至今年，至少有十本她寫的書。",g:"現在完成式被動",e:"books 是被寫的，用 have been written。A、B、C 皆為主動，後面不能接 by her。"},
+{id:"3-05",q:"John: When will we have the final exam?  Stella: It ______ in mid June.",o:["will be held","will be holding","will hold","will be taken place"],a:"A",tr:"約翰：我們何時考期末考? 史黛拉：它將在六月中舉行。",g:"未來簡單式被動",e:"考試是被舉行，用 will be held。take place 為不及物片語，無被動，故 D 錯。"},
+{id:"3-06",q:"Look at your messy desk! It's ______ books and magazines! How can you find any room to do your homework?",o:["covering","covered with","covering of","covered by"],a:"B",tr:"看看這亂七八糟的桌子，都佈滿了書和雜誌，你怎麼找得到空間做你的作業?",g:"be covered with（慣用介系詞）",e:"「被…覆蓋」固定用 be covered with。by 表動作的行為者，用在此語意不自然。"},
+{id:"3-07",q:"A terrible big fire ______ in the eastern part of the city last month.",o:["broke out","was broken out","had been broken out","had broken out"],a:"A",tr:"上個月，這個城市的東部爆發了一場可怕的火災。",g:"無被動的動詞 break out",e:"break out（爆發）為不及物片語，沒有被動。last month 為明確過去時間，用過去簡單式 broke out。"},
+{id:"3-08",q:"When you return to Taiwan next time, hopefully, the traffic ______ by then.",o:["will improve a lot","improves very much","will be much improved","will be improving quite a lot"],a:"C",tr:"希望下次你回來台灣時，交通已經改善許多。",g:"未來式被動 + much 修飾",e:"by then 表未來之前，traffic 被改善，用 will be improved，much 修飾。其餘為主動語態，語意不合。"},
+{id:"3-09",q:"Something is wrong with my car. Could you send it to the garage and have it ______ for me?",o:["to repair","repairing","repaired","to be repaired"],a:"C",tr:"我的車子出了問題。你可以幫我送去修車廠修理嗎?",g:"使役動詞 have + 受詞 + p.p.",e:"車子「被修理」為被動關係，have it + p.p.。have 後不接 to 不定詞，故 A、D 錯。"},
+{id:"3-10",q:"Peggy: May I use your bathroom, Cathy?  Cathy: Sure. But, do you mind waiting for one more second? It's ______ right now.",o:["using by others","being used","having used","had used"],a:"B",tr:"佩吉：凱西，我可以用你的浴室嗎? 凱西：當然，不過你介意再等一下嗎?有人正在使用。",g:"現在進行式被動",e:"浴室「正被使用中」，用 is being used。其餘結構錯誤。"},
+{id:"3-11",q:"Mary ______ the coffee shop by a friend of mine.",o:["is seen enter","has been seen to enter","had been seen enter","was seen to enter"],a:"D",tr:"Mary 被我的一位朋友看見走進咖啡廳。",g:"感官動詞被動需加 to",e:"see + O + 原形 V 改被動時，原形要變成 to V，故 was seen to enter。A、C 缺 to；B 時態不合 by a friend 的過去事件。"},
+{id:"3-12",q:"I didn't enjoy having dinner with those guests at all. I was ______ so.",o:["made to do","making doing","making done","made doing"],a:"A",tr:"我一點兒都不喜歡跟那些客人吃飯。我是被迫這麼做的。",g:"使役動詞 make 的被動",e:"make + O + 原形 V，改被動為 be made to V，故 was made to do so。"},
+{id:"3-13",q:"Mom: Don't move the stove, Jenny. I mean, ______.",o:["do not let the stove move","don't let the stove be moving","let the stove not be moved","don't be moving the stove"],a:"C",tr:"媽媽：珍妮，不要移動火爐。我是說，別讓火爐被移動了。",g:"祈使句的被動：Let + O + be + p.p.",e:"祈使句被動為 Let + 受詞 + be + p.p.，否定可放 not 於 be 前，即 let the stove not be moved。"},
+{id:"3-14",q:"English ______ all over the world.",o:["speaks","is speaking","is spoken","is being spoken"],a:"C",tr:"全世界都在說英文。",g:"現在簡單式被動",e:"語言是被說的，且為普遍事實，用現在簡單式被動 is spoken。"},
+{id:"3-15",q:"When they told me that they ______, I ______.",o:["divorced; extremely surprised","had been divorcing; was extremely surprising","had divorced; had extremely surprised","had been divorced; was extremely surprised"],a:"D",tr:"當他們告訴我他們已離婚時，我非常驚訝。",g:"被動語態與情緒動詞",e:"be divorced 表離婚的狀態，在告知之前用過去完成式被動；「我感到驚訝」用 was surprised，不是 surprising。"},
+{id:"3-16",q:"There are always so many traffic accidents every day. Most traffic accidents ______ because of drunk driving and speeding.",o:["happen","are happened","have happened","are happening"],a:"A",tr:"每天總有很多車禍，大部分的車禍都是因為酒駕和超速。",g:"無被動的動詞 happen",e:"happen 為不及物動詞，無被動，且 every day 表習慣，用現在簡單式。"},
+{id:"3-17",q:"Nicole ______ her husband's explanation at all. She was somewhat upset.",o:["didn't satisfy about","wasn't satisfying to","wasn't satisfied with","hadn't satisfied in"],a:"C",tr:"妮可完全不滿意她先生的解釋。她有些生氣。",g:"be satisfied with",e:"「對…感到滿意」為被動 be satisfied with，其他介系詞與語態皆錯。"},
+{id:"3-18",q:"選出正確的句子",o:["Has the table clean?","Is the table cleaned?","Is the table cleaning?","Has the table cleaned?"],a:"B",tr:"桌子清理了嗎?",g:"疑問句被動語態",e:"table 是被清理的，疑問句被動為 be 動詞 + 主詞 + p.p.。A、D 缺 been；C 為主動進行式。"},
+{id:"3-19",q:"I ______ learning English.",o:["interest in","am interesting","interested in","am interested in"],a:"D",tr:"我對英文有興趣。",g:"情緒動詞用被動",e:"人「感到有興趣」用 be interested in，不用 interesting。A、C 缺 be 動詞。"},
+{id:"3-20",q:"To see the movie ______ me four hours.",o:["was taken","is cost","took","cost"],a:"C",tr:"看這部電影花了我四小時。",g:"無被動的動詞 take / cost",e:"花「時間」用 take，花「金錢」用 cost。此處為時間，且為過去，用 took。A、B 為被動，不成立。"}
+].map(x=>({c:3,t:"主動語態與被動語態",...x})));
+/* 第四章 */
+QUESTIONS.push(...[
+{id:"4-01",q:"We all agree that ______ are men's best friends.",o:["a dog","dog","dogs","the dog"],a:"C",tr:"我們都同意狗是人類最好的朋友。",g:"主詞與動詞一致：泛指用複數",e:"動詞 are 為複數，主詞需為複數 dogs（泛指所有的狗）。A、B、D 皆為單數，與 are 不一致。"},
+{id:"4-02",q:"I am not the tallest in my family. My _______ very tall.",o:["families are all","family is all","all family are","family are all"],a:"D",tr:"我不是家裡面最高的。我的家人都很高。",g:"集合名詞視為複數",e:"family 指家中成員（分開看），視為複數，用 are；all 置於 be 動詞後。B 動詞單數；A 的 families 語意不合；C 語序錯誤。"},
+{id:"4-03",q:"Please make the most of your time. Wasting time ______ wasting life.",o:["were","was","are","is"],a:"D",tr:"請善用你的時間。浪費時間就是浪費生命。",g:"動名詞片語作主詞視為單數",e:"Wasting time 為動名詞片語，視為單數，且表一般道理用現在式 is。"},
+{id:"4-04",q:"The number of the students ______ increasing.",o:["is","are","has","have"],a:"A",tr:"學生的數量正在增加。",g:"The number of + 複數 N → 單數動詞",e:"The number of 的主詞是 number（數量），用單數動詞 is；has、have 後面需接 p.p.，不合 increasing。"},
+{id:"4-05",q:"Don't sit on that chair. ______ are broken.",o:["The chair's leg","The chairs' leg","The legs of the chair","The leg of the chairs"],a:"C",tr:"不要坐那張椅子。椅子的腳壞掉了。",g:"主詞複數、動詞 are",e:"are 需搭配複數主詞，只有 The legs of the chair 是複數主詞且語意正確；其餘主詞皆為單數 leg。"},
+{id:"4-06",q:"______ made from white grapes. It tastes great.",o:["This wine is","These wines are","These wine are","This wine are"],a:"A",tr:"這酒是用白葡萄製成的。嚐起來很棒。",g:"主詞與動詞一致",e:"後句 It tastes 指單一的酒，故用單數 This wine is。C 的 These 與 wine 不一致，D 的主詞單數卻用 are。"},
+{id:"4-07",q:"Thanks to the two ______ from my uncle, I escaped the trouble.",o:["advices","pieces of advices","advice","pieces of advice"],a:"D",tr:"幸虧我叔叔的兩則忠告，讓我免於麻煩。",g:"不可數名詞的計量",e:"advice 為不可數名詞，計量用 pieces of advice（piece 加複數，advice 不加 s）。"},
+{id:"4-08",q:"Because of the flu, ______ students were absent from school yesterday.",o:["hundreds of","hundreds","ten hundreds of","two hundreds"],a:"A",tr:"因為流感的關係，數百位學生昨天沒有到校。",g:"hundreds of：概數",e:"表「數百」的概數用 hundreds of。有明確數字時 hundred 不加 s，且不可說 ten hundreds of。"},
+{id:"4-09",q:"The twin sisters are very clever. ______ are my good friends.",o:["Both of them","Both them","All of them","They all"],a:"A",tr:"這對雙胞胎姐妹非常聰明。她們都是我的好朋友。",g:"both of + 受格（兩者）",e:"雙胞胎共兩人，用 Both of them。B 缺 of；C 的 all 用於三者以上；D 的 They all 為同位語結構，不如 A 自然。"},
+{id:"4-10",q:"George Brown is ______. He paints well and also writes great novels.",o:["painter and writer","a painter and writer","a painter and a writer","writer and novelist"],a:"B",tr:"喬治布朗是一位畫家兼作家。他畫得很棒而且很會寫小說。",g:"N and N 視為同一人",e:"同一人兼具兩種身分，只在前面放一個冠詞：a painter and writer。若是 a painter and a writer 則視為兩人。A 缺冠詞。"},
+{id:"4-11",q:"I know Wendy very well. She is ______.",o:["a close friend of mine","my a close friend","one of my close friend","a mine close friend"],a:"A",tr:"我很了解 Wendy。她是我其中一位親密好友。",g:"雙重所有格 a ... of + 所有格代名詞",e:"冠詞與所有格不能並列，用 a friend of mine。C 的 one of 後需接複數 friends。"},
+{id:"4-12",q:"Look! There are beautiful ______ on the ground.",o:["fallen leaf","a fallen leaf","fallen leaves","fallen leafs"],a:"C",tr:"看！地上有好多落葉。",g:"名詞複數變化",e:"there are 後接複數名詞，leaf 的複數為 leaves（f 變 v 加 es）。"},
+{id:"4-13",q:"This is an international village. ______, such as French, Japanese, German and Chinese, live in this village.",o:["Many people","Many peoples","A lot people","Lots people"],a:"B",tr:"這是一個國際村。有很多民族如法國人、日本人、德國人和中國人都住在這個村莊。",g:"people 的單複數與意義",e:"此處指「多個民族」，peoples 為民族的複數。若指「人們」才用 people。C、D 缺 of。"},
+{id:"4-14",q:"I don't think it's appropriate to have such a game. ______ is too long and tiring for ten-year-old kids.",o:["A two-mile race","Two-mile's-race","Two mile race","Two miles race"],a:"A",tr:"我覺得舉辦這場比賽並不適合。一場兩英哩的競賽對十歲小孩來說太長也太累了。",g:"數詞-單位 + 名詞作形容詞（單位不加 s）",e:"a two-mile race 中 mile 作形容詞，不加 s，主詞為單數，故用 is。B、C、D 形式或單複數不正確。"},
+{id:"4-15",q:"Jackson as well as his two sisters ______ good at English.",o:["do","does","is","are"],a:"C",tr:"傑克森和他的兩個姐姐都很擅長英文。",g:"A as well as B：動詞與 A 一致",e:"動詞依前面的 Jackson（單數）而定；be good at 用 is。does 不能接形容詞 good。"},
+{id:"4-16",q:"What he just said ______ not true. You have to believe me.",o:["was","were","is","are"],a:"C",tr:"他剛剛說的都不是真的。你必須相信我。",g:"名詞子句作主詞視為單數",e:"What 子句作主詞視為單數，用 is。was 雖為單數，但語意為現在判斷「不是真的」，故選 is。"},
+{id:"4-17",q:"There ______ in this house. Each of you could have your own room.",o:["are enough rooms","are enough room","is a lot of rooms","are much room"],a:"A",tr:"這房子有足夠的房間。你們每一個人都可以擁有自己的房間。",g:"There be 句型與可數名詞",e:"rooms 為可數複數，用 are enough rooms。B 的 room 單數不合 are；C 單複數不一致；D 的 much 不修飾可數複數。"},
+{id:"4-18",q:"When I was in the market place last Sunday morning, ______ was doing their shopping.",o:["many a woman","many woman","many a women","quite a woman"],a:"A",tr:"上星期天早上我在市場的時候，很多婦人都在購物。",g:"many a + 單數 N → 單數動詞",e:"many a 後接單數名詞，視為單數動詞（was）。B 缺 a；C 的 women 為複數，不可接在 many a 後。"},
+{id:"4-19",q:"Neither Jason nor I ______ going to move out.",o:["is","am","are","were"],a:"B",tr:"傑森和我都不要搬出去。",g:"Neither A nor B：動詞與 B 一致",e:"動詞依最靠近的主詞 I，用 am。現在式 am going to 符合語意，were 時態不合。"},
+{id:"4-20",q:"A number of girls ______ in the playground.",o:["is playing","are played","is played","are playing"],a:"D",tr:"一些女孩在操場玩耍。",g:"A number of + 複數 N → 複數動詞",e:"A number of 意為「一些」，主詞為 girls，用複數 are playing。play 在此為主動進行式，不用被動。"}
+].map(x=>({c:4,t:"主詞與動詞的一致",...x})));
+/* 第五章 */
+QUESTIONS.push(...[
+{id:"5-01",q:"The baseball game will be held at 3:30 p.m. today. But if it ______ this afternoon, we'll have to call off the game.",o:["rains","will rain","is going to rain","would rain"],a:"A",tr:"棒球比賽將在今天下午三點三十分舉行。但是如果下午下雨的話，我們會取消這場比賽。",g:"條件句：現在式代替未來式",e:"可能發生的條件句，if 子句用現在式 rains，主要子句用 will。if 子句不用 will、would。"},
+{id:"5-02",q:"Nobody knows whether Michelle will go or not. If she really ______, we will be very happy.",o:["will go","is going","does","will do"],a:"C",tr:"沒人知道蜜雪兒是否會去，如果她真的去的話，我們將會非常高興。",g:"條件句 + 助動詞加強語氣",e:"if 子句用現在式，且 really 加強語氣用 does（代替 goes）。if 子句不可用 will。"},
+{id:"5-03",q:"If I ______ the answer, I would certainly help you with the message.",o:["know","knew","would know","had known"],a:"B",tr:"如果我知道答案的話，我一定會告訴你。",g:"與現在事實相反",e:"主要子句為 would help（與現在相反），if 子句用過去式 knew。had known 為與過去相反。"},
+{id:"5-04",q:"What can I do now? If Mom ______ here, she would help me with this troublesome problem.",o:["is","would be","was","were"],a:"D",tr:"我現在該怎麼辦?如果媽媽在這裡的話，她會協助我處理這麻煩的問題。",g:"與現在事實相反：be 動詞用 were",e:"與現在事實相反，if 子句 be 動詞一律用 were。"},
+{id:"5-05",q:"Since it's raining so hard, why don't you stay here for a little longer? If it ______ raining now, I would go with you.",o:["isn't","is","were","weren't"],a:"D",tr:"既然雨下得這麼大，你何不在這裡多待一會兒?如果現在沒有下雨的話，我會跟你一起去的。",g:"與現在事實相反（否定）",e:"事實是正在下雨，假設相反「沒下雨」，用 weren't。C 的 were 為肯定，語意相反。"},
+{id:"5-06",q:"If you ______ your passport during your trip abroad, you must call the police right away.",o:["will lose","should lose","have lost","shall lose"],a:"B",tr:"萬一你在國外旅行時搞丟護照的話，你一定要立刻通知警方。",g:"未來萬一：If + should + V",e:"表「萬一」用 If + S + should + V，主要子句可用 must。if 子句不可用 will、shall。"},
+{id:"5-07",q:"If the sun ______ rise in the west, I ______ not marry a man like him.",o:["should; will","would; should","was about to; could","were to; would"],a:"D",tr:"就算太陽從西邊出來，我也不會嫁給像他那樣的男人。",g:"未來不可能：If + were to + V",e:"太陽從西邊升起是不可能的事，用 were to，主要子句用 would。"},
+{id:"5-08",q:"______ you lent me the money yesterday, I would ______ a birthday gift for her.",o:["If; bought","Were; buy","Had; have bought","Have; had bought"],a:"C",tr:"假如你昨天借我錢的話，我就會買生日禮物給她了。",g:"與過去事實相反（省略 If 倒裝）",e:"與過去相反：If you had lent = Had you lent；主要子句 would have bought。"},
+{id:"5-09",q:"If I had known what he was thinking, I ______ able to help him.",o:["could be","would have been","would be","should be"],a:"B",tr:"假如我當時知道他在想什麼的話，我就能夠幫助他了。",g:"與過去事實相反",e:"if 子句為 had known，主要子句用 would have + p.p.，即 would have been。"},
+{id:"5-10",q:"It's a great pity that my mother can't share my success with me. How I wish she ______ here.",o:["be","were","had been","has been"],a:"B",tr:"真可惜我媽媽不能與我分享我的成功。我多希望她在這裡。",g:"I wish：與現在事實相反",e:"媽媽現在不在，願望與現在事實相反，wish 後用 were。"},
+{id:"5-11",q:"The man kept talking about Germany for almost an hour; it seemed as if he ______ there.",o:["were","would be","had been","would have been"],a:"C",tr:"那個人一直在談論德國幾乎一個小時了；似乎彷彿他曾經待過那裡。",g:"as if：與過去事實相反",e:"說話者推測他「曾去過」（與過去事實相反），as if 後用 had been。"},
+{id:"5-12",q:"Helen: What happened, Tom? Are you all right?  Tom: I'm fine. I'm just tired.  Helen: But you look as if you ______ sick.",o:["would be","were getting","were","had been"],a:"C",tr:"海倫：湯姆，你怎麼了?你還好嗎? 湯姆：我很好，我只是累了。 海倫：但是你看起來好像生病了。",g:"as if：與現在事實相反",e:"Tom 其實沒生病，與現在事實相反，as if 後用 were。"},
+{id:"5-13",q:"I am very sorry that I couldn't offer my help in time. How I wish I ______ here before you did that yesterday.",o:["was able to be","were about to be","should have been","could have arrived"],a:"D",tr:"我很抱歉我沒辦法及時給你幫助。我多希望，你昨天做那件事之前，我能在場。",g:"I wish：與過去事實相反",e:"表過去的遺憾，wish 後用 had + p.p. 或 could have + p.p.，即 could have arrived。"},
+{id:"5-14",q:"How I wish I ______ time fooling around when I was young.",o:["had not wasted","haven't wasted","didn't waste","weren't wasting"],a:"A",tr:"我多希望，我年輕時沒有浪費時間鬼混。",g:"I wish：與過去事實相反",e:"when I was young 為過去，wish 後用 had + p.p.，即 had not wasted。"},
+{id:"5-15",q:"If he should come late, ______ him to wait for a moment.",o:["telling","I told","you told","tell"],a:"D",tr:"萬一他遲到的話，告訴他等一下。",g:"If should 的主要子句：祈使句",e:"If should 句型的主要子句可用祈使句，直接用原形動詞 tell。"},
+{id:"5-16",q:"What ______ you do if you won the lottery?",o:["will","shall","had","would"],a:"D",tr:"假如你中樂透的話，你會怎麼做?",g:"與現在事實相反",e:"if 子句為過去式 won，主要子句用 would + 原形 V。"},
+{id:"5-17",q:"______ I old enough, I could decide my own life.",o:["If","Am","Had been","Were"],a:"D",tr:"如果我年紀夠大的話，我就可以決定我自己的人生。",g:"省略 If 的倒裝：Were + S",e:"If I were old enough 省略 If 後倒裝為 Were I old enough。"},
+{id:"5-18",q:"I didn't know Peter's address. If I ______ it, I ______ mailed this letter.",o:["have known; would","knew; could","had known; could have","were to know; would"],a:"C",tr:"我當時並不知道 Peter 的住址。假如我知道的話，我當時就可以寄這封信給他了。",g:"與過去事實相反",e:"與過去相反：If + had + p.p.，主要子句 could have + p.p.。"},
+{id:"5-19",q:"I don't have money. If I ______ it, I ______ the house.",o:["have; can buy","had had; would have bought","had; could have bought","had; would buy"],a:"D",tr:"我沒有錢。如果我有的話，我就會買這棟房子。",g:"與現在事實相反",e:"I don't have 為現在事實，假設相反用 If I had...，主要子句 would buy。"},
+{id:"5-20",q:"______ my boss come back, tell me immediately.",o:["Were","Should","If","Had"],a:"B",tr:"萬一我老闆回來的話，立刻告訴我。",g:"省略 If 的倒裝：Should + S + V",e:"If my boss should come back 省略 If 後倒裝為 Should my boss come back。"}
+].map(x=>({c:5,t:"假設語氣",...x})));
+/* 第六章 */
+QUESTIONS.push(...[
+{id:"6-01",q:"May I take a look at that picture again? I want ______ it more carefully.",o:["see","to see","seeing","seen"],a:"B",tr:"我可以再看一次那張照片嗎?我想要看得更仔細一些。",g:"want + to V",e:"want 後接不定詞作受詞，即 want to see。其餘形式不能直接接在 want 後。"},
+{id:"6-02",q:"Adam: Do you want to stay here watching TV while I go out for some exercise?  Betty: Well, I hope ______ out with you.",o:["go","going","to go","gone"],a:"C",tr:"亞當：我出去運動的時候，你想要待在這看電視嗎? 貝蒂：嗯，我希望可以跟你出去。",g:"hope + to V",e:"hope 後接不定詞，即 hope to go。hope 不接動名詞。"},
+{id:"6-03",q:"It's very important ______ on time, especially in the business world.",o:["you are","to be","be","to have been"],a:"B",tr:"守時是很重要的，尤其是在商場。",g:"It is + Adj + to V（虛主詞）",e:"It 為虛主詞，真主詞為不定詞片語 to be on time。A 缺連接詞；C 缺 to；D 時態不合。"},
+{id:"6-04",q:"He made it a rule ______ exercise every morning, for the purpose ______ his own health.",o:["to take; of improving","taking; improving","to take; improving","taking; to improve"],a:"A",tr:"為了改善他的健康，他習慣每天早上運動。",g:"虛受詞 it + to V；介系詞 + V-ing",e:"make it a rule to V 中 it 為虛受詞，真受詞為 to V。for the purpose of 為介系詞片語，後接動名詞 improving。"},
+{id:"6-05",q:"Jean was so shy that anyone had hardly heard her sing. However, she was once heard ______ a beautiful love song by some of my friends.",o:["to sing","sing","singing","sung"],a:"A",tr:"珍很害羞以致於幾乎沒人聽過她唱歌。然而，有一次她被我的一些朋友聽到唱了一首美妙的情歌。她的歌聲甜美。",g:"感官動詞被動：to V",e:"hear her sing 改被動為 was heard to sing，原形要還原為 to V。B 缺 to；C 強調進行，與 once 的完整事件不符。"},
+{id:"6-06",q:"You shouldn't ask him to solve such a difficult problem. He is too young ______ it.",o:["answer","answering","to answer","to have to answer"],a:"C",tr:"你不應該叫他解決這麼難的問題。他年紀太輕沒辦法解決。",g:"too ... to V",e:"too + Adj + to V 表「太…以致於不能」，即 too young to answer。"},
+{id:"6-07",q:"We didn't know how to do the research, so we had to wait for our teacher's direction. She would tell us ______ as the first step.",o:["where to start","start from where","to start what","how is starting"],a:"A",tr:"我們不知道如何做研究，所以我們必須等老師的指示。她會告訴我們第一步從哪開始。",g:"疑問詞 + to V",e:"tell + 人 + 疑問詞 + to V，即 where to start。B、D 語序錯誤，C 結構不合。"},
+{id:"6-08",q:"The mother warned the child ______ the hot pot. However, the naughty boy didn't listen to his mother, and got burned as a result.",o:["to touch","to not touch","don't touch","not to touch"],a:"D",tr:"媽媽警告小孩不要碰熱茶壺，但是調皮的男孩不聽他媽媽的話，因此燙傷了。",g:"不定詞的否定：not to V",e:"否定不定詞的 not 要放在 to 之前，即 not to touch。"},
+{id:"6-09",q:"Music is so important to me. I enjoy _______ to classical music while I'm working.",o:["to listen","listening","listen","listened"],a:"B",tr:"音樂對我來說很重要，我喜歡在工作的時候聽古典樂。",g:"enjoy + V-ing",e:"enjoy 後一定接動名詞，即 enjoy listening to。"},
+{id:"6-10",q:"I promise I will quit ______ by the end of this month.",o:["smoke","to smoke","smoking","to smoking"],a:"C",tr:"我保證我會在月底前戒菸。",g:"quit + V-ing",e:"quit（戒除）後接動名詞，即 quit smoking。quit to smoke 語意為「放棄去吸菸」，不合。"},
+{id:"6-11",q:"Camilla: When can we meet again?  Barbara: I guess I will return to Taiwan again before May.  Camilla: Great. I'll be looking forward ________ you then.",o:["see","to see","to seeing","seeing"],a:"C",tr:"卡蜜拉：我們什麼時候可以再見面? 芭芭拉：我想我在五月之前會再回來台灣。 卡蜜拉：很好，我期待到時與你見面。",g:"介系詞 to + V-ing",e:"look forward to 中的 to 是介系詞，後接動名詞，即 to seeing。"},
+{id:"6-12",q:"When dinner was ready, my brother Jack was playing clay with Tom. Mother called Jack to stop ______ his hands.",o:["washing","to wash","wash","having washed"],a:"B",tr:"當晚餐準備好的時候，我弟弟傑克還在跟湯姆玩黏土。媽媽叫傑克停下來去洗手。",g:"stop + to V（停下來去做另一件事）",e:"stop to wash 表停下手邊的事去洗手。stop washing 是停止洗手，語意相反。"},
+{id:"6-13",q:"Grace: When are you leaving, anyway? I've been waiting for you for quite a while.  Doris: I know. I'm sorry to keep you ______. I'll be ready soon.",o:["await","to wait","wait","waiting"],a:"D",tr:"葛莉絲：你到底什麼時候離開?我一直等你好一段時間了。朵莉絲：我知道，我很抱歉讓你等，我很快就好了。",g:"keep + O + V-ing",e:"keep + 受詞 + V-ing 表讓某人持續處於某狀態，即 keep you waiting。"},
+{id:"6-14",q:"My next-door neighbor is an old gentleman. He always speaks softly, trying to avoid ______ any unpleasant noises.",o:["to make","making","to have made","to be made"],a:"B",tr:"我隔壁的鄰居是一位年紀大的紳士，他總是溫和地說話，試著避免發出任何令人不悅的噪音。",g:"avoid + V-ing",e:"avoid 後一定接動名詞，即 avoid making。"},
+{id:"6-15",q:"Bob: Didn't you say that you were going on a diet?  Steve: You are right, but I can't help ______.",o:["always eat","to have it","to eat so much","eating"],a:"D",tr:"鮑伯：你不是說你在節食嗎? 史帝夫：沒錯，可是我就是忍不住一直吃。",g:"can't help + V-ing",e:"can't help 後接動名詞，表「忍不住」，即 can't help eating。"},
+{id:"6-16",q:"I remember ______ him that you won't go to the party by telephone last night. Perhaps it was he who forgot.",o:["to tell","telling","say to","speak to"],a:"B",tr:"我記得我昨天晚上在電話中有跟他說你不會參加派對，也許是他忘記了。",g:"remember + V-ing（記得做過）",e:"記得「已經做過」的事用 remember + V-ing，即 remember telling。"},
+{id:"6-17",q:"I forgot ______ the picture in my wallet last night, so I didn't bring it this morning.",o:["putting","to put","put","to have put"],a:"B",tr:"我昨天晚上忘記把照片放進我的皮夾了，所以今天早上我沒有帶來。",g:"forget + to V（忘記要做）",e:"「忘記要去做」，事情沒做，用 forget to put。所以今早沒帶。"},
+{id:"6-18",q:"Mandy is busy ______ her report. The report is due today.",o:["typing","to type","to write","to be writing"],a:"A",tr:"曼蒂忙著打她的報告。今天是繳交的日子。",g:"be busy + V-ing",e:"be busy 後接動名詞，即 busy typing。"},
+{id:"6-19",q:"I used ______ mountains when I was younger, but now I am no longer used ______ mountains for exercise.",o:["to climb; to climb","to climb; to climbing","climbing; climbing","climbing; to climb"],a:"B",tr:"我以前年輕時會爬山，但是現在我不再以爬山當作運動了。",g:"used to V 與 be used to V-ing",e:"used to + 原形 V 表過去習慣；be used to + V-ing 表習慣於，故 to climb; to climbing。"},
+{id:"6-20",q:"Mike: Why are you standing here? Do you have any trouble ______ your house?  Shirly: Yes. I forgot ______ my key.",o:["to enter; to bring","to enter; bringing","entering; to bring","entering; bringing"],a:"C",tr:"麥可：你為什麼站在這裡? 你進入你家有困難嗎? 雪莉：是的，我忘記帶鑰匙了。",g:"have trouble + V-ing；forget + to V",e:"have trouble (in) + V-ing，即 trouble entering；忘了「要帶」用 forgot to bring。"}
+].map(x=>({c:6,t:"動狀詞（不定詞、動名詞、分詞）",...x})));
+
+/* ===== 程式邏輯 ===== */
+const $=s=>document.querySelector(s),app=$('#app'),L='ABCD';
+let list=[],i=0,ans={},done={},mode='practice',sel=[];
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+function home(){
+  const chs=[...new Set(QUESTIONS.map(q=>q.c))];
+  const hist=(store.get('gq_hist')||[]).slice(-3).reverse();
+  app.innerHTML=`<h1>📘 英文文法測驗</h1><div class="card"><h2>選擇章節</h2>
+  <label class="c"><input type="checkbox" id="all"> 全部章節</label>
+  ${chs.map(c=>{const q=QUESTIONS.find(x=>x.c==c);return `<label class="c"><input type="checkbox" class="ch" value="${c}" checked> 第${c}章　${q.t}（${QUESTIONS.filter(x=>x.c==c).length}題）</label>`}).join('')}
+  <h2 style="margin-top:16px">模式</h2>
+  <label class="c"><input type="radio" name="m" value="practice" checked> 練習模式：每題提交後立即顯示說明</label>
+  <label class="c"><input type="radio" name="m" value="exam"> 考試模式：全部作答完再批改</label>
+  <p class="sub">題目依原題號順序出題，選項固定為 A–D。</p>
+  <div class="row"><button id="go">開始測驗</button></div></div>
+  ${hist.length?`<div class="card"><h2>最近成績</h2>${hist.map(h=>`<div class="sub">${h.d}　${h.s}/${h.n}（${h.p}%）</div>`).join('')}</div>`:''}
+  ${(store.get('gq_wrong')||[]).length?`<div class="row"><button class="g" id="wb">練習錯題本（${store.get('gq_wrong').length}題）</button></div>`:''}`;
+  $('#all').onchange=e=>document.querySelectorAll('.ch').forEach(x=>x.checked=e.target.checked);
+  $('#go').onclick=()=>{sel=[...document.querySelectorAll('.ch:checked')].map(x=>+x.value);if(!sel.length)return alert('請至少選一章');
+    mode=document.querySelector('[name=m]:checked').value;start(QUESTIONS.filter(q=>sel.includes(q.c)))};
+  const wb=$('#wb');if(wb)wb.onclick=()=>{mode=document.querySelector('[name=m]:checked').value;start(QUESTIONS.filter(q=>store.get('gq_wrong').includes(q.id)))};
+}
+function start(l){list=l;i=0;ans={};done={};show()}
+function show(){
+  const q=list[i],d=done[q.id]||(mode=='exam'?false:false),a=ans[q.id];
+  app.innerHTML=`<div class="sub">第${q.c}章・${i+1} / ${list.length}</div><div class="bar"><i style="width:${(i+1)/list.length*100}%"></i></div>
+  <div class="card"><div class="q">${q.q}</div><div class="sub" style="margin-bottom:6px">🈶 ${q.tr}</div>
+  ${q.o.map((t,k)=>{let cl='opt';if(d){if(L[k]==q.a)cl+=' ok';else if(L[k]==a)cl+=' no'}else if(L[k]==a)cl+=' sel';
+    return `<button class="${cl}" data-k="${L[k]}" ${d?'disabled':''}><b>${L[k]}.</b> ${t}</button>`}).join('')}
+  ${q.n?`<div class="sub">⚠ 此題原文有疑點：${q.n}</div>`:''}
+  ${d?`<div class="exp"><b>${a==q.a?'✅ 答對了':'❌ 答錯了，正確答案：'+q.a}</b><br>📌 <b>${q.g}</b><br>${q.e}</div>`:''}</div>
+  <div class="row"><button class="g" id="pv" ${i?'':'disabled'}>上一題</button>
+  ${mode=='practice'&&!d?`<button id="sb" ${a?'':'disabled'}>提交</button>`:`<button id="nx">${i==list.length-1?'完成':'下一題'}</button>`}</div>`;
+  document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>pick(b.dataset.k));
+  $('#pv').onclick=()=>{i--;show()};
+  const sb=$('#sb'),nx=$('#nx');if(sb)sb.onclick=submit;if(nx)nx.onclick=next;
+}
+function pick(k){const q=list[i];if(done[q.id])return;ans[q.id]=k;show()}
+function submit(){const q=list[i];if(!ans[q.id])return;done[q.id]=1;show()}
+function next(){if(i<list.length-1){i++;show()}else finish()}
+function finish(){
+  const un=list.filter(q=>!ans[q.id]).length;if(un&&!confirm(`還有 ${un} 題未作答，確定完成？`))return;
+  const wrong=list.filter(q=>ans[q.id]!=q.a),sc=list.length-wrong.length,p=Math.round(sc/list.length*100);
+  const h=store.get('gq_hist')||[];h.push({d:new Date().toLocaleString('zh-TW'),s:sc,n:list.length,p});store.set('gq_hist',h.slice(-30));
+  let wb=new Set(store.get('gq_wrong')||[]);list.forEach(q=>ans[q.id]==q.a?wb.delete(q.id):wb.add(q.id));store.set('gq_wrong',[...wb]);
+  const by={};list.forEach(q=>{by[q.c]=by[q.c]||[0,0];by[q.c][1]++;if(ans[q.id]==q.a)by[q.c][0]++});
+  app.innerHTML=`<h1>測驗結果</h1><div class="card" style="text-align:center"><div class="big">${sc} / ${list.length}</div><div>正確率 ${p}%</div></div>
+  <div class="card"><h2>各章節正確率</h2>${Object.entries(by).map(([c,v])=>`<div>第${c}章：${v[0]}/${v[1]}（${Math.round(v[0]/v[1]*100)}%）</div>`).join('')}</div>
+  <div class="card"><h2>錯題列表（${wrong.length}）</h2>${wrong.length?wrong.map(q=>`<details><summary>${q.id}　${q.q}</summary>
+  <p>你的答案：${ans[q.id]||'未作答'}　正確答案：<b>${q.a}. ${q.o[L.indexOf(q.a)]}</b></p><p>🈶 ${q.tr}</p><p>📌 <b>${q.g}</b><br>${q.e}</p></details>`).join(''):'🎉 全部答對！'}</div>
+  <div class="row"><button id="rw" ${wrong.length?'':'disabled'}>重做錯題</button><button id="rs" class="g">重新測驗</button><button id="hm" class="g">回首頁</button></div>`;
+  $('#rw').onclick=()=>start(wrong);$('#rs').onclick=()=>start(QUESTIONS.filter(q=>sel.includes(q.c)).length?QUESTIONS.filter(q=>sel.includes(q.c)):list);$('#hm').onclick=home;
+}
+document.addEventListener('keydown',e=>{
+  if(!list.length||!$('.opt'))return;const k=e.key.toUpperCase();
+  if('ABCD'.includes(k)&&k.length==1)pick(k);else if(e.key=='Enter'){const q=list[i];(mode=='practice'&&!done[q.id])?submit():next()}
+});
+home();
+</script></body></html>
